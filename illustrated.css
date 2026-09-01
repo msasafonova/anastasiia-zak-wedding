@@ -1,57 +1,31 @@
-/* Illustrated page layer — loaded after style.css. Envelope animation rules intentionally untouched. */
-body{position:relative;background:#f6eddf;background-image:radial-gradient(circle at 48% 7%,rgba(255,255,255,.76),transparent 28%),linear-gradient(180deg,rgba(248,240,227,.96),rgba(242,229,210,.97));}
-body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:min(25vw,360px);pointer-events:none;z-index:0;opacity:.72;background-repeat:no-repeat;background-size:100% auto;}
-body::before{left:0;background-image:url('assets/folk-flowers.svg?v=watercolor2'),url('assets/olive-lemons.svg?v=watercolor2');background-position:-34px -38px,-80px calc(100% + 70px);background-size:330px auto,360px auto;}
-body::after{right:0;background-image:url('assets/birch-sprig.svg?v=watercolor2'),url('assets/kangaroo.svg?v=watercolor2');background-position:calc(100% + 48px) 48%,calc(100% + 42px) 88%;background-size:310px auto,255px auto;opacity:.58;}
-.site-header,main{position:relative;z-index:2;}
-.site-header{background:linear-gradient(180deg,rgba(248,240,227,.88),rgba(248,240,227,0));}
-.hero{min-height:100svh;background-image:linear-gradient(180deg,rgba(255,251,244,.18),rgba(246,235,218,.2)),url('assets/olive-lemons.svg?v=watercolor2');background-repeat:no-repeat;background-position:center,2% 88%;background-size:auto,265px auto;}
-.hero .shawl-corner{left:-28px;top:-26px;width:min(38vw,440px);height:auto;transform:rotate(-4deg);border:0;border-radius:0;background:none;opacity:.98;filter:drop-shadow(0 12px 20px rgba(72,47,33,.08));}
-.hero .greek-sky{right:-10px;top:58px;width:min(32vw,370px);height:auto;border-radius:0;background:none;opacity:.9;filter:drop-shadow(0 10px 16px rgba(35,73,102,.08));}
-.hero .olive-left,.hero .olive-right{display:none;}
-.envelope-stage{z-index:6;}
-.envelope{filter:drop-shadow(0 27px 28px rgba(65,43,26,.22));}
-.invitation-intro{width:min(1120px,calc(100% - 56px));min-height:760px;margin-top:34px;margin-bottom:82px;border:1px solid rgba(45,72,96,.28);background-color:rgba(250,244,234,.91);background-image:url('assets/folk-flowers.svg?v=watercolor2'),url('assets/folk-flowers.svg?v=watercolor2'),url('assets/greek-church.svg?v=watercolor2'),radial-gradient(circle at 50% 38%,rgba(255,255,255,.9),rgba(247,237,220,.82) 70%);background-repeat:no-repeat;background-position:-64px -62px,calc(100% + 70px) calc(100% + 70px),50% calc(100% + 22px),center;background-size:330px auto,300px auto,210px auto,auto;box-shadow:0 26px 60px rgba(69,48,30,.12);}
-.invitation-intro .intro-folk-corner{display:none;}
-.invitation-intro .intro-birch{width:150px;height:auto;bottom:-10px;opacity:.7;}
-.invitation-intro .intro-birch-left{left:-30px;transform:rotate(-5deg);}
-.invitation-intro .intro-birch-right{right:-28px;transform:scaleX(-1) rotate(-5deg);}
-.invitation-intro .intro-greek-band{bottom:44px;opacity:.8;}
-.details-showcase,.venue-details,.timeline-story,.dress-showcase,.rsvp-showcase,.actions{position:relative;background:rgba(250,245,236,.83);backdrop-filter:blur(1px);box-shadow:0 18px 42px rgba(77,53,34,.055);}
-.details-showcase{border:1px solid rgba(18,59,104,.18);margin-bottom:80px;overflow:hidden;}
-.details-showcase::before,.details-showcase::after{content:"";position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:contain;opacity:.22;z-index:0;}
-.details-showcase::before{left:-52px;bottom:-62px;width:220px;height:270px;background-image:url('assets/olive-lemons.svg?v=watercolor2');}
-.details-showcase::after{right:-32px;top:-30px;width:190px;height:210px;background-image:url('assets/folk-flowers.svg?v=watercolor2');}
-.details-showcase>*{position:relative;z-index:1;}
-.venue-details{padding:72px 54px;margin-bottom:68px;border-top:1px solid rgba(18,59,104,.14);border-bottom:1px solid rgba(18,59,104,.14);}
-.venue-details::before{content:"";position:absolute;left:-120px;top:150px;width:300px;height:310px;background:url('assets/greek-church.svg?v=watercolor2') center/contain no-repeat;opacity:.18;pointer-events:none;}
-.timeline-story{padding-left:48px;padding-right:48px;border:1px solid rgba(18,59,104,.14);}
-.timeline-story::after{content:"";position:absolute;right:-72px;bottom:-25px;width:220px;height:330px;background:url('assets/birch-sprig.svg?v=watercolor2') bottom right/contain no-repeat;opacity:.28;pointer-events:none;}
-.dress-showcase{border-top:1px solid rgba(18,59,104,.14);border-bottom:1px solid rgba(18,59,104,.14);}
-.dress-showcase::before{content:"";position:absolute;left:-68px;bottom:-72px;width:220px;height:280px;background:url('assets/folk-flowers.svg?v=watercolor2') center/contain no-repeat;opacity:.23;pointer-events:none;}
-.rsvp-showcase{margin-top:72px;padding:72px 66px;border:1px solid rgba(18,59,104,.18);}
-.rsvp-showcase::after{content:"";position:absolute;right:-85px;top:-64px;width:220px;height:290px;background:url('assets/olive-lemons.svg?v=watercolor2') center/contain no-repeat;opacity:.2;pointer-events:none;}
-.actions{margin-top:58px;margin-bottom:58px;padding:44px;border:1px solid rgba(18,59,104,.18);}
-.actions::before{content:"";position:absolute;left:-85px;bottom:-52px;width:190px;height:280px;background:url('assets/kangaroo.svg?v=watercolor2') center/contain no-repeat;opacity:.2;pointer-events:none;}
-.action-card{background:rgba(255,251,244,.78);}
-.closing{position:relative;z-index:2;padding-bottom:110px;}
+/* Painterly watercolor layer. Envelope animation and functional components remain in style.css. */
+body{position:relative;background:#f5ecde;background-image:radial-gradient(circle at 50% 8%,rgba(255,255,255,.72),transparent 28%),linear-gradient(180deg,#f9f1e6 0%,#f4e7d5 100%)}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url('assets/watercolor-border.svg?v=20260902-wc1') top center/100% 100% no-repeat;opacity:.92}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 32%,rgba(255,252,246,.58),rgba(255,252,246,.08) 42%,transparent 67%)}
+.site-header,main{position:relative;z-index:2}
+.site-header{background:linear-gradient(180deg,rgba(249,242,232,.93),rgba(249,242,232,.28) 72%,transparent)}
+/* Remove the old flat/cartoon SVG illustrations completely. */
+.hero .shawl-corner,.hero .greek-sky,.hero .olive,.invitation-intro .intro-folk-corner,.invitation-intro .intro-birch{display:none!important}
+.hero{min-height:100svh;background:none}
+.envelope-stage{z-index:6}
+.envelope{filter:drop-shadow(0 27px 30px rgba(66,44,28,.22))}
+.invitation-intro{width:min(1120px,calc(100% - 56px));min-height:760px;margin-top:34px;margin-bottom:82px;border:1px solid rgba(45,72,96,.22);background:linear-gradient(180deg,rgba(252,247,239,.92),rgba(247,237,221,.88));box-shadow:0 26px 60px rgba(69,48,30,.11);backdrop-filter:blur(1px)}
+.invitation-intro .intro-greek-band{bottom:44px;opacity:.72}
+.details-showcase,.venue-details,.timeline-story,.dress-showcase,.rsvp-showcase,.actions{position:relative;background:rgba(251,246,238,.87);backdrop-filter:blur(1px);box-shadow:0 18px 42px rgba(77,53,34,.055)}
+.details-showcase{border:1px solid rgba(18,59,104,.16);margin-bottom:80px;overflow:hidden}
+.venue-details{padding:72px 54px;margin-bottom:68px;border-top:1px solid rgba(18,59,104,.13);border-bottom:1px solid rgba(18,59,104,.13)}
+.timeline-story{padding-left:48px;padding-right:48px;border:1px solid rgba(18,59,104,.13)}
+.dress-showcase{border-top:1px solid rgba(18,59,104,.13);border-bottom:1px solid rgba(18,59,104,.13)}
+.rsvp-showcase{margin-top:72px;padding:72px 66px;border:1px solid rgba(18,59,104,.16)}
+.actions{margin-top:58px;margin-bottom:58px;padding:44px;border:1px solid rgba(18,59,104,.16)}
+.action-card{background:rgba(255,251,244,.82)}
+.closing{position:relative;z-index:2;padding-bottom:110px}
 @media(max-width:760px){
- body::before{width:178px;opacity:.62;background-position:-28px 34px,-64px calc(100% + 18px);background-size:205px auto,225px auto;}
- body::after{width:178px;opacity:.52;background-position:calc(100% + 25px) 55%,calc(100% + 18px) 90%;background-size:205px auto,170px auto;}
- .site-header{background:linear-gradient(180deg,rgba(248,240,227,.94),rgba(248,240,227,.45) 70%,transparent);}
- .hero{padding-left:12px;padding-right:12px;background-position:center,-30px 91%;background-size:auto,225px auto;}
- .hero .shawl-corner{width:235px;left:-44px;top:-8px;opacity:.96;}
- .hero .greek-sky{width:188px;right:-22px;top:78px;opacity:.92;}
- .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px;background-position:-42px -28px,calc(100% + 42px) calc(100% + 48px),50% calc(100% + 10px),center;background-size:230px auto,220px auto,165px auto,auto;}
- .invitation-intro .intro-birch{width:110px;opacity:.68;}
- .details-showcase{width:calc(100% - 22px);margin-bottom:48px;}
- .details-showcase::before{left:-28px;bottom:-36px;width:175px;height:220px;opacity:.34;}
- .details-showcase::after{right:-18px;top:-18px;width:155px;height:180px;opacity:.32;}
- .venue-details,.timeline-story,.rsvp-showcase,.actions{width:calc(100% - 22px);padding-left:20px;padding-right:20px;}
- .venue-details::before{left:-54px;width:185px;opacity:.24;}
- .timeline-story::after{right:-35px;width:155px;opacity:.32;}
- .dress-showcase::before{left:-38px;width:175px;opacity:.32;}
- .rsvp-showcase::after{right:-46px;width:165px;opacity:.3;}
- .actions{padding:26px 18px;margin-top:42px;overflow:hidden;}
- .actions::before{display:block;left:-34px;bottom:-42px;width:135px;height:210px;opacity:.24;}
+ body::before{background-size:auto 100%;background-position:50% top;opacity:.84}
+ .site-header{background:linear-gradient(180deg,rgba(249,242,232,.97),rgba(249,242,232,.48) 72%,transparent)}
+ .hero{padding-left:12px;padding-right:12px}
+ .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
+ .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
+ .venue-details,.timeline-story,.rsvp-showcase,.actions{width:calc(100% - 22px);padding-left:20px;padding-right:20px}
+ .actions{padding:26px 18px;margin-top:42px;overflow:hidden}
 }
