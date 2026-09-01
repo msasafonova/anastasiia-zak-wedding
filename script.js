@@ -18,6 +18,7 @@ viewInvitation?.addEventListener('click', () => {
   });
 });
 
+const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwjWWFIL9EObg5obVMAF0jMKQDIA9p8MZcWKdm7S7MsklgwKGNgmn-UFIdexszf1MdgRA/exec';
 const rsvpForm = document.getElementById('rsvpForm');
 const attendingFields = document.getElementById('attendingFields');
 const rsvpStatus = document.getElementById('rsvpStatus');
@@ -33,33 +34,55 @@ function updateAttendanceFields() {
   });
 }
 
+function showRsvpStatus(type, title, message) {
+  if (!rsvpStatus) return;
+  rsvpStatus.hidden = false;
+  rsvpStatus.dataset.state = type;
+  rsvpStatus.innerHTML = `<strong>${title}</strong><span>${message}</span>`;
+  rsvpStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
 attendanceInputs.forEach((input) => input.addEventListener('change', updateAttendanceFields));
 updateAttendanceFields();
 
-rsvpForm?.addEventListener('submit', (event) => {
+rsvpForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!rsvpForm.reportValidity()) return;
 
+  const submitButton = rsvpForm.querySelector('.rsvp-submit');
   const formData = new FormData(rsvpForm);
+  const attendance = (formData.get('attendance') || '').toString();
   const submission = {
-    submittedAt: new Date().toISOString(),
     name: (formData.get('name') || '').toString().trim(),
-    attendance: (formData.get('attendance') || '').toString(),
-    guests: (formData.get('guests') || '').toString().trim(),
-    dietary: (formData.get('dietary') || '').toString().trim(),
+    attending: attendance === 'yes' ? 'Yes' : 'Sadly, no',
+    guests: attendance === 'yes' ? (formData.get('guests') || '').toString().trim() : '',
+    dietary: attendance === 'yes' ? (formData.get('dietary') || '').toString().trim() : '',
     message: (formData.get('message') || '').toString().trim()
   };
 
-  const existing = JSON.parse(localStorage.getItem('anastasiiaZakRsvpTest') || '[]');
-  existing.push(submission);
-  localStorage.setItem('anastasiiaZakRsvpTest', JSON.stringify(existing));
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
+  }
+  if (rsvpStatus) rsvpStatus.hidden = true;
 
-  rsvpForm.reset();
-  updateAttendanceFields();
+  try {
+    await fetch(RSVP_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(submission)
+    });
 
-  if (rsvpStatus) {
-    rsvpStatus.hidden = false;
-    rsvpStatus.innerHTML = '<strong>Thank you!</strong><span>Your test RSVP was saved on this device.</span>';
-    rsvpStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    rsvpForm.reset();
+    updateAttendanceFields();
+    showRsvpStatus('success', 'Thank you!', 'Your RSVP has been sent to Anastasiia & Zak. ♡');
+  } catch (error) {
+    showRsvpStatus('error', 'Something went wrong', 'Please try sending your RSVP again in a moment.');
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send RSVP ♡';
+    }
   }
 });
