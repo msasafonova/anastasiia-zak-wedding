@@ -23,6 +23,11 @@ const rsvpForm = document.getElementById('rsvpForm');
 const attendingFields = document.getElementById('attendingFields');
 const rsvpStatus = document.getElementById('rsvpStatus');
 const attendanceInputs = document.querySelectorAll('input[name="attendance"]');
+const rsvpNote = document.querySelector('.rsvp-test-note');
+
+if (rsvpNote) {
+  rsvpNote.textContent = 'Your RSVP will be sent directly to Anastasiia & Zak.';
+}
 
 function updateAttendanceFields() {
   const selected = document.querySelector('input[name="attendance"]:checked')?.value;
