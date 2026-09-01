@@ -221,16 +221,15 @@ button { color: inherit; }
   .greek-sky { width:190px; height:210px; top:70px; }
   .dome { transform:scale(.7); transform-origin:top right; }
   .olive { display:none; }
-  .envelope-address { top:27%; width:98%; font-size:clamp(27px,8.8vw,39px); }
-  .wax-seal { top:76%; width:72px; height:72px; gap:3px; }
+  .envelope-address { top:29%; width:96%; font-size:clamp(25px,8vw,38px); }
+  .wax-seal { top:72%; width:72px; height:72px; gap:3px; }
   .seal-monogram { font-size:10px; }
   .seal-date { font-size:9px; font-weight:700; letter-spacing:.04em; }
-  .invitation-card { left:4%; right:4%; bottom:5%; height:86%; padding:20px 17px; transform:translateY(18%) scale(.985); transition:transform 3.25s cubic-bezier(.12,.62,.18,1) 1.05s, opacity 2.25s ease 1.08s, box-shadow 1.2s ease 2s; }
+  .invitation-card { left:6.5%; right:6.5%; bottom:5%; height:86%; padding:20px 17px; }
   .card-copy { font-size:15px; }
   .card-kicker { font-size:31px; }
   .card-script { font-size:25px; margin-bottom:10px; }
   .view-button { font-size:12px; padding:10px 16px; }
-  .envelope.open .invitation-card { transform:translateY(-26%) scale(1); opacity:1; z-index:9; }
   .intro { padding-top:80px; }
   .details { grid-template-columns:1fr 1fr; }
   .detail-card:nth-child(3) { border-left:0; border-top:1px solid var(--line); }
@@ -246,9 +245,6 @@ button { color: inherit; }
   .nav a:nth-child(2) { display:none; }
   .hero { min-height:820px; }
   .envelope-stage { margin-top:120px; padding-bottom:145px; }
-  .envelope-address { font-size:clamp(25px,8.2vw,34px); }
-  .wax-seal { top:78%; }
-  .envelope.open .invitation-card { transform:translateY(-27%) scale(1); }
   .details { grid-template-columns:1fr; }
   .detail-card + .detail-card { border-left:0; border-top:1px solid var(--line); }
   .actions { padding-bottom:45px; }
@@ -256,5 +252,4 @@ button { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior:auto; }
-  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; transition-delay:0ms !important; }
 }
