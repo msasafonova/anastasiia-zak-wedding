@@ -1,11 +1,9 @@
 .hero { overflow: visible; }
 
-/* On desktop the whole envelope composition sits lower in the viewport,
-   so the opened invitation remains fully visible like the approved reference. */
 .envelope-stage {
   padding-top: 70px;
   padding-bottom: 150px;
-  transform: translateY(120px);
+  transform: translateY(70px);
 }
 .envelope { overflow: visible; }
 
@@ -22,9 +20,9 @@
   will-change: transform, opacity;
 }
 
-/* Keep the same card exposure as the approved screenshot. */
+/* Desktop: stop the card much lower so it stays fully inside the viewport. */
 .envelope.open .invitation-card {
-  transform: translateY(-38%) scale(1);
+  transform: translateY(-18%) scale(1);
   opacity: 1;
   z-index: 9;
   box-shadow: 0 22px 42px rgba(71,47,29,.20);
@@ -74,23 +72,28 @@
     padding-bottom: 165px;
     transform: none;
   }
-  .envelope-address { top: 25%; }
 
-  /* With the date now on the seal, move the seal well below Zak. */
-  .wax-seal { width: 76px; height: 76px; top: 70%; gap: 2px; }
+  /* Keep the names high and place the seal near the bottom of the envelope. */
+  .envelope-address { top: 20%; }
+  .wax-seal {
+    width: 76px;
+    height: 76px;
+    top: 78%;
+    gap: 2px;
+  }
   .wax-seal .seal-monogram { font-size: 10px; }
   .wax-seal .seal-date { font-size: 7px; letter-spacing: .05em; }
   .wax-seal .seal-open { font-size: 7px; }
 
   .invitation-card .card-content { transform: translateY(11%); }
-  .envelope.open .invitation-card { transform: translateY(-48%) scale(1); }
+  .envelope.open .invitation-card { transform: translateY(-36%) scale(1); }
 }
 
 @media (max-width: 430px) {
   .hero { min-height: 900px; }
   .envelope-stage { margin-top: 150px; padding-bottom: 160px; }
-  .envelope-address { top: 23%; }
-  .wax-seal { top: 72%; }
+  .envelope-address { top: 18%; }
+  .wax-seal { top: 80%; }
   .invitation-card .card-content { transform: translateY(12%); }
-  .envelope.open .invitation-card { transform: translateY(-50%) scale(1); }
+  .envelope.open .invitation-card { transform: translateY(-38%) scale(1); }
 }
