@@ -1,117 +1,97 @@
-.hero {
-  overflow: visible;
-}
+.hero { overflow: visible; }
+.envelope-stage { padding-top: 70px; padding-bottom: 150px; }
+.envelope { overflow: visible; }
 
-.envelope-stage {
-  padding-top: 70px;
-  padding-bottom: 120px;
-}
-
-.envelope {
-  overflow: visible;
-}
-
+/* The card begins deep inside the envelope and glides out slowly. */
 .invitation-card {
   z-index: 2;
   bottom: 6%;
   height: 84%;
-  transform: translateY(18%) scale(.985);
+  transform: translateY(22%) scale(.975);
   opacity: 0;
   transition:
-    transform 2.15s cubic-bezier(.16,.72,.22,1) .62s,
-    opacity .7s ease .55s,
-    box-shadow .9s ease 1.35s;
+    transform 3.25s cubic-bezier(.12,.62,.18,1) .72s,
+    opacity 1s ease .65s,
+    box-shadow 1.2s ease 2.1s;
   will-change: transform, opacity;
 }
-
 .envelope.open .invitation-card {
-  transform: translateY(-92%) scale(1);
+  transform: translateY(-82%) scale(1);
   opacity: 1;
   z-index: 9;
   box-shadow: 0 28px 48px rgba(71,47,29,.24);
 }
 
-.envelope.open .envelope-front {
-  z-index: 6;
+/* Keep the invitation wording visually centred on the paper. */
+.invitation-card .card-content {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(7%);
 }
 
-.envelope.open .envelope-flap {
-  z-index: 1;
-}
+.envelope.open .envelope-front { z-index: 6; }
+.envelope.open .envelope-flap { z-index: 1; }
 
+/* Names stay above the seal; the date now sits low on the envelope. */
+.envelope-address { top: 31%; }
+.envelope-date {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  white-space: nowrap;
+  transition: opacity .5s ease .15s;
+  pointer-events: none;
+}
+.envelope.open .envelope-date { opacity: 0; }
+
+/* The wax seal itself is now the only Open control. */
 .wax-seal {
   top: 61%;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
-
-.open-hint {
-  position: absolute;
-  left: 50%;
-  bottom: 42px;
-  transform: translateX(-50%);
-  margin: 0;
-  z-index: 12;
-  min-width: 110px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(248,240,227,.88);
-  box-shadow: 0 8px 22px rgba(68,45,28,.10);
-  backdrop-filter: blur(3px);
-}
-
-.envelope.open + .open-hint {
-  opacity: 0;
-  transform: translate(-50%, 8px);
-  pointer-events: none;
-  transition: opacity .5s ease, transform .5s ease;
-}
+.wax-seal .seal-monogram { font-family: "Italiana", serif; font-size: 13px; line-height: 1; }
+.wax-seal .seal-open { font-family: "Cormorant Garamond", serif; font-size: 10px; font-weight: 600; letter-spacing: .18em; line-height: 1; }
 
 .view-button {
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity .55s ease 2.15s, transform .55s ease 2.15s;
+  transition: opacity .7s ease 3.35s, transform .7s ease 3.35s;
 }
-
-.envelope.open .view-button {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+.envelope.open .view-button { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
 @media (max-width: 760px) {
-  .hero {
-    min-height: 980px;
-  }
-
-  .envelope-stage {
-    margin-top: 150px;
-    padding-top: 40px;
-    padding-bottom: 150px;
-  }
-
-  .envelope.open .invitation-card {
-    transform: translateY(-108%) scale(1);
-  }
-
-  .open-hint {
-    bottom: 72px;
-  }
+  .hero { min-height: 1020px; }
+  .envelope-stage { margin-top: 150px; padding-top: 40px; padding-bottom: 180px; }
+  .envelope-address { top: 29%; }
+  .envelope-date { bottom: 7%; font-size: 12px; letter-spacing: .16em; }
+  .wax-seal { width: 72px; height: 72px; top: 59%; }
+  .wax-seal .seal-monogram { font-size: 11px; }
+  .wax-seal .seal-open { font-size: 8px; }
+  .invitation-card .card-content { transform: translateY(9%); }
+  .envelope.open .invitation-card { transform: translateY(-98%) scale(1); }
 }
 
 @media (max-width: 430px) {
-  .hero {
-    min-height: 900px;
-  }
-
-  .envelope-stage {
-    margin-top: 155px;
-    padding-bottom: 155px;
-  }
-
-  .envelope.open .invitation-card {
-    transform: translateY(-116%) scale(1);
-  }
-
-  .open-hint {
-    bottom: 78px;
-  }
+  .hero { min-height: 940px; }
+  .envelope-stage { margin-top: 155px; padding-bottom: 185px; }
+  .envelope-address { top: 27%; }
+  .envelope-date { bottom: 6%; }
+  .wax-seal { top: 58%; }
+  .invitation-card .card-content { transform: translateY(10%); }
+  .envelope.open .invitation-card { transform: translateY(-104%) scale(1); }
 }
