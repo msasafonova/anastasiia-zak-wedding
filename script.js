@@ -163,3 +163,106 @@ rsvpForm?.addEventListener('submit', async (event) => {
     }
   }
 });
+
+const PHOTO_UPLOAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfUQRGDjzIIE1ADq6iYl_xEcYGPX2LgdJM9Cq7-myfEtc1wwyY2aCajKLz31mrxc7f4A/exec';
+const photoUploadForm = document.getElementById('photoUploadForm');
+const photoFiles = document.getElementById('photoFiles');
+const photoGuestName = document.getElementById('photoGuestName');
+const photoSelection = document.getElementById('photoSelection');
+const photoUploadStatus = document.getElementById('photoUploadStatus');
+const photoUploadButton = document.getElementById('photoUploadButton');
+const MAX_PHOTO_SIZE = 15 * 1024 * 1024;
+const MAX_PHOTO_COUNT = 20;
+
+function safeFilePart(value) {
+  return value.replace(/[^a-z0-9 _.-]/gi, '').trim().replace(/\s+/g, '-').slice(0, 40);
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || '');
+      resolve(result.includes(',') ? result.split(',')[1] : result);
+    };
+    reader.onerror = () => reject(reader.error || new Error('Could not read file'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function showPhotoStatus(message, state = 'info') {
+  if (!photoUploadStatus) return;
+  photoUploadStatus.hidden = false;
+  photoUploadStatus.dataset.state = state;
+  photoUploadStatus.textContent = message;
+}
+
+photoFiles?.addEventListener('change', () => {
+  const files = Array.from(photoFiles.files || []);
+  if (!photoSelection) return;
+  if (!files.length) {
+    photoSelection.textContent = 'You can choose several photos at once.';
+    return;
+  }
+  photoSelection.textContent = `${files.length} photo${files.length === 1 ? '' : 's'} selected.`;
+});
+
+photoUploadForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const files = Array.from(photoFiles?.files || []);
+
+  if (!files.length) {
+    showPhotoStatus('Please choose at least one photo.', 'error');
+    return;
+  }
+  if (files.length > MAX_PHOTO_COUNT) {
+    showPhotoStatus(`Please upload up to ${MAX_PHOTO_COUNT} photos at a time.`, 'error');
+    return;
+  }
+
+  const tooLarge = files.find((file) => file.size > MAX_PHOTO_SIZE);
+  if (tooLarge) {
+    showPhotoStatus(`${tooLarge.name} is too large. Please keep each photo under 15 MB.`, 'error');
+    return;
+  }
+
+  if (photoUploadButton) {
+    photoUploadButton.disabled = true;
+    photoUploadButton.textContent = 'Uploading…';
+  }
+
+  const guest = safeFilePart(photoGuestName?.value || '');
+
+  try {
+    for (let index = 0; index < files.length; index += 1) {
+      const file = files[index];
+      showPhotoStatus(`Uploading ${index + 1} of ${files.length}: ${file.name}`);
+      const base64 = await fileToBase64(file);
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const originalName = safeFilePart(file.name) || `photo-${index + 1}`;
+      const fileName = `${guest ? `${guest}-` : ''}${timestamp}-${originalName}`;
+
+      await fetch(PHOTO_UPLOAD_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          file: base64,
+          fileName,
+          mimeType: file.type || 'application/octet-stream'
+        })
+      });
+    }
+
+    photoUploadForm.reset();
+    if (photoSelection) photoSelection.textContent = 'You can choose several photos at once.';
+    showPhotoStatus(`Thank you! ${files.length === 1 ? 'Your photo has' : 'Your photos have'} been uploaded ♡`, 'success');
+  } catch (error) {
+    showPhotoStatus('Something went wrong while uploading. Please try again.', 'error');
+  } finally {
+    if (photoUploadButton) {
+      photoUploadButton.disabled = false;
+      photoUploadButton.textContent = 'Upload photos ♡';
+    }
+  }
+});
