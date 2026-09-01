@@ -18,7 +18,7 @@ viewInvitation?.addEventListener('click', () => {
   });
 });
 
-const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwjWWFIL9EObg5obVMAF0jMKQDIA9p8MZcWKdm7S7MsklgwKGNgmn-UFIdexszf1MdgRA/exec';
+const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxD116hffgZxumCRJq3X44uPD8e2-9otJ6MHx5dVn_5ox0BbfAzdhNOE8WIZn7lKZfN3w/exec';
 const rsvpForm = document.getElementById('rsvpForm');
 const attendingFields = document.getElementById('attendingFields');
 const rsvpStatus = document.getElementById('rsvpStatus');
