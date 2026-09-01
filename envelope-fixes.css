@@ -2,7 +2,6 @@
 .envelope-stage { padding-top: 70px; padding-bottom: 150px; }
 .envelope { overflow: visible; }
 
-/* Keep the same slow, smooth glide. */
 .invitation-card {
   z-index: 2;
   bottom: 6%;
@@ -16,15 +15,14 @@
   will-change: transform, opacity;
 }
 
-/* On desktop, stop the card lower so it stays comfortably in frame. */
+/* Final position mirrors the approved screenshot: card remains visibly seated in the envelope. */
 .envelope.open .invitation-card {
-  transform: translateY(-62%) scale(1);
+  transform: translateY(-38%) scale(1);
   opacity: 1;
   z-index: 9;
-  box-shadow: 0 28px 48px rgba(71,47,29,.24);
+  box-shadow: 0 22px 42px rgba(71,47,29,.20);
 }
 
-/* Move the wording lower on the card. */
 .invitation-card .card-content {
   width: 100%;
   min-height: 100%;
@@ -32,40 +30,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateY(14%);
+  transform: translateY(10%);
 }
 
-.envelope.open .envelope-front { z-index: 6; }
+.envelope.open .envelope-front { z-index: 10; }
 .envelope.open .envelope-flap { z-index: 1; }
-
 .envelope-address { top: 31%; }
-.envelope-date {
-  position: absolute;
-  z-index: 7;
-  left: 50%;
-  bottom: 8%;
-  transform: translateX(-50%);
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: .22em;
-  white-space: nowrap;
-  transition: opacity .5s ease .15s;
-  pointer-events: none;
-}
-.envelope.open .envelope-date { opacity: 0; }
 
+/* Date is part of the wax seal now. */
+.envelope-date { display: none; }
 .wax-seal {
   top: 61%;
-  width: 90px;
-  height: 90px;
+  width: 94px;
+  height: 94px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
 }
 .wax-seal .seal-monogram { font-family: "Italiana", serif; font-size: 13px; line-height: 1; }
-.wax-seal .seal-open { font-family: "Cormorant Garamond", serif; font-size: 10px; font-weight: 600; letter-spacing: .18em; line-height: 1; }
+.wax-seal .seal-date { font-family: "Cormorant Garamond", serif; font-size: 9px; font-weight: 600; letter-spacing: .08em; line-height: 1; white-space: nowrap; }
+.wax-seal .seal-open { font-family: "Cormorant Garamond", serif; font-size: 9px; font-weight: 600; letter-spacing: .18em; line-height: 1; }
 
 .view-button {
   opacity: 0;
@@ -75,27 +61,22 @@
 .envelope.open .view-button { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
 @media (max-width: 760px) {
-  .hero { min-height: 1020px; }
-  .envelope-stage { margin-top: 150px; padding-top: 40px; padding-bottom: 180px; }
+  .hero { min-height: 980px; }
+  .envelope-stage { margin-top: 150px; padding-top: 40px; padding-bottom: 165px; }
   .envelope-address { top: 27%; }
-
-  /* Push the seal upward and the date lower so they cannot collide. */
-  .wax-seal { width: 72px; height: 72px; top: 51%; }
-  .envelope-date { bottom: 2.5%; font-size: 11px; letter-spacing: .13em; }
-
-  .wax-seal .seal-monogram { font-size: 11px; }
-  .wax-seal .seal-open { font-size: 8px; }
-
-  .invitation-card .card-content { transform: translateY(16%); }
-  .envelope.open .invitation-card { transform: translateY(-82%) scale(1); }
+  .wax-seal { width: 76px; height: 76px; top: 57%; gap: 2px; }
+  .wax-seal .seal-monogram { font-size: 10px; }
+  .wax-seal .seal-date { font-size: 7px; letter-spacing: .05em; }
+  .wax-seal .seal-open { font-size: 7px; }
+  .invitation-card .card-content { transform: translateY(11%); }
+  .envelope.open .invitation-card { transform: translateY(-48%) scale(1); }
 }
 
 @media (max-width: 430px) {
-  .hero { min-height: 940px; }
-  .envelope-stage { margin-top: 155px; padding-bottom: 185px; }
+  .hero { min-height: 900px; }
+  .envelope-stage { margin-top: 150px; padding-bottom: 160px; }
   .envelope-address { top: 25%; }
-  .wax-seal { top: 49%; }
-  .envelope-date { bottom: 1.5%; font-size: 10px; letter-spacing: .11em; }
-  .invitation-card .card-content { transform: translateY(18%); }
-  .envelope.open .invitation-card { transform: translateY(-86%) scale(1); }
+  .wax-seal { top: 56%; }
+  .invitation-card .card-content { transform: translateY(12%); }
+  .envelope.open .invitation-card { transform: translateY(-50%) scale(1); }
 }
