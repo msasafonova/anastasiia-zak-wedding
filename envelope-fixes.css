@@ -15,17 +15,17 @@
   z-index: 2;
   bottom: 6%;
   height: 84%;
-  transform: translateY(18%);
+  transform: translateY(18%) scale(.985);
   opacity: 0;
   transition:
-    transform 1.35s cubic-bezier(.18,.82,.22,1) .52s,
-    opacity .35s ease .42s,
-    box-shadow .45s ease 1.15s;
+    transform 2.15s cubic-bezier(.16,.72,.22,1) .62s,
+    opacity .7s ease .55s,
+    box-shadow .9s ease 1.35s;
   will-change: transform, opacity;
 }
 
 .envelope.open .invitation-card {
-  transform: translateY(-92%);
+  transform: translateY(-92%) scale(1);
   opacity: 1;
   z-index: 9;
   box-shadow: 0 28px 48px rgba(71,47,29,.24);
@@ -62,13 +62,13 @@
   opacity: 0;
   transform: translate(-50%, 8px);
   pointer-events: none;
-  transition: opacity .35s ease, transform .35s ease;
+  transition: opacity .5s ease, transform .5s ease;
 }
 
 .view-button {
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity .45s ease 1.42s, transform .45s ease 1.42s;
+  transition: opacity .55s ease 2.15s, transform .55s ease 2.15s;
 }
 
 .envelope.open .view-button {
@@ -89,7 +89,7 @@
   }
 
   .envelope.open .invitation-card {
-    transform: translateY(-108%);
+    transform: translateY(-108%) scale(1);
   }
 
   .open-hint {
@@ -108,7 +108,7 @@
   }
 
   .envelope.open .invitation-card {
-    transform: translateY(-116%);
+    transform: translateY(-116%) scale(1);
   }
 
   .open-hint {
