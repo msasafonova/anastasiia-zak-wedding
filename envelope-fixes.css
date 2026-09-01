@@ -2,7 +2,6 @@
 .envelope-stage { padding-top: 70px; padding-bottom: 150px; transform: none; }
 .envelope { overflow: visible; }
 
-/* Card starts inside the envelope and only travels a short distance. */
 .invitation-card {
   z-index: 2;
   bottom: 6%;
@@ -16,11 +15,10 @@
   will-change: transform, opacity;
 }
 
-/* The card does NOT need to leave the envelope: it rises a little and fades in. */
 .envelope.open .invitation-card {
   transform: translateY(-24%) scale(1) !important;
   opacity: 1 !important;
-  z-index: 9 !important;
+  z-index: 20 !important;
   box-shadow: 0 20px 40px rgba(71,47,29,.18);
 }
 
@@ -34,18 +32,16 @@
   transform: translateY(10%);
 }
 
-/* Front of envelope becomes translucent while the card appears through it. */
 .envelope-front {
-  transition: opacity 2.4s ease .75s;
+  transition: opacity 2.4s ease .75s !important;
 }
 .envelope.open .envelope-front {
   z-index: 10 !important;
-  opacity: .18 !important;
+  opacity: .12 !important;
 }
-.envelope.open .envelope-flap { z-index: 1; }
+.envelope.open .envelope-flap { z-index: 1 !important; }
 .envelope-date { display: none; }
 
-/* Names and seal layout. */
 .envelope-address {
   top: 27% !important;
   width: 94% !important;
@@ -95,9 +91,34 @@
   .wax-seal .seal-monogram { font-size: 10px; }
   .wax-seal .seal-date { font-size: 7px; letter-spacing: .05em; }
   .wax-seal .seal-open { font-size: 7px; }
+
+  /* Mobile: force the card in front and make the envelope face almost transparent. */
+  .invitation-card {
+    opacity: 0 !important;
+    transform: translateY(16%) scale(.985) !important;
+    transition:
+      transform 3.25s cubic-bezier(.12,.62,.18,1) .65s,
+      opacity 2.7s ease .65s,
+      box-shadow 1.2s ease 2s !important;
+  }
+  .envelope.open .invitation-card {
+    transform: translateY(-30%) scale(1) !important;
+    opacity: 1 !important;
+    z-index: 30 !important;
+  }
+  .envelope-front {
+    transition: opacity 2.4s ease .7s !important;
+  }
+  .envelope.open .envelope-front {
+    z-index: 5 !important;
+    opacity: .03 !important;
+  }
+  .envelope.open .envelope-front::before,
+  .envelope.open .envelope-front::after {
+    opacity: .03 !important;
+  }
+  .envelope.open .envelope-flap { z-index: 1 !important; }
   .invitation-card .card-content { transform: translateY(11%); }
-  .envelope.open .invitation-card { transform: translateY(-27%) scale(1) !important; }
-  .envelope.open .envelope-front { opacity: .14 !important; }
 }
 
 @media (max-width: 430px) {
@@ -106,6 +127,12 @@
   .envelope-address { top: 24% !important; font-size: clamp(25px, 8vw, 34px) !important; }
   .wax-seal { top: 83% !important; }
   .invitation-card .card-content { transform: translateY(12%); }
-  .envelope.open .invitation-card { transform: translateY(-28%) scale(1) !important; }
-  .envelope.open .envelope-front { opacity: .12 !important; }
+  .envelope.open .invitation-card {
+    transform: translateY(-31%) scale(1) !important;
+    z-index: 30 !important;
+  }
+  .envelope.open .envelope-front {
+    opacity: .02 !important;
+    z-index: 5 !important;
+  }
 }
