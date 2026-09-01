@@ -2,7 +2,7 @@
 .envelope-stage { padding-top: 70px; padding-bottom: 150px; }
 .envelope { overflow: visible; }
 
-/* The card begins deep inside the envelope and glides out slowly. */
+/* Keep the same slow, smooth glide. */
 .invitation-card {
   z-index: 2;
   bottom: 6%;
@@ -15,14 +15,16 @@
     box-shadow 1.2s ease 2.1s;
   will-change: transform, opacity;
 }
+
+/* On desktop, stop the card lower so it stays comfortably in frame. */
 .envelope.open .invitation-card {
-  transform: translateY(-82%) scale(1);
+  transform: translateY(-62%) scale(1);
   opacity: 1;
   z-index: 9;
   box-shadow: 0 28px 48px rgba(71,47,29,.24);
 }
 
-/* Keep the invitation wording visually centred on the paper. */
+/* Move the wording lower on the card. */
 .invitation-card .card-content {
   width: 100%;
   min-height: 100%;
@@ -30,13 +32,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateY(7%);
+  transform: translateY(14%);
 }
 
 .envelope.open .envelope-front { z-index: 6; }
 .envelope.open .envelope-flap { z-index: 1; }
 
-/* Names stay above the seal; the date now sits low on the envelope. */
 .envelope-address { top: 31%; }
 .envelope-date {
   position: absolute;
@@ -53,7 +54,6 @@
 }
 .envelope.open .envelope-date { opacity: 0; }
 
-/* The wax seal itself is now the only Open control. */
 .wax-seal {
   top: 61%;
   width: 90px;
@@ -77,21 +77,25 @@
 @media (max-width: 760px) {
   .hero { min-height: 1020px; }
   .envelope-stage { margin-top: 150px; padding-top: 40px; padding-bottom: 180px; }
-  .envelope-address { top: 29%; }
-  .envelope-date { bottom: 7%; font-size: 12px; letter-spacing: .16em; }
-  .wax-seal { width: 72px; height: 72px; top: 59%; }
+  .envelope-address { top: 27%; }
+
+  /* Push the seal upward and the date lower so they cannot collide. */
+  .wax-seal { width: 72px; height: 72px; top: 51%; }
+  .envelope-date { bottom: 2.5%; font-size: 11px; letter-spacing: .13em; }
+
   .wax-seal .seal-monogram { font-size: 11px; }
   .wax-seal .seal-open { font-size: 8px; }
-  .invitation-card .card-content { transform: translateY(9%); }
-  .envelope.open .invitation-card { transform: translateY(-98%) scale(1); }
+
+  .invitation-card .card-content { transform: translateY(16%); }
+  .envelope.open .invitation-card { transform: translateY(-82%) scale(1); }
 }
 
 @media (max-width: 430px) {
   .hero { min-height: 940px; }
   .envelope-stage { margin-top: 155px; padding-bottom: 185px; }
-  .envelope-address { top: 27%; }
-  .envelope-date { bottom: 6%; }
-  .wax-seal { top: 58%; }
-  .invitation-card .card-content { transform: translateY(10%); }
-  .envelope.open .invitation-card { transform: translateY(-104%) scale(1); }
+  .envelope-address { top: 25%; }
+  .wax-seal { top: 49%; }
+  .envelope-date { bottom: 1.5%; font-size: 10px; letter-spacing: .11em; }
+  .invitation-card .card-content { transform: translateY(18%); }
+  .envelope.open .invitation-card { transform: translateY(-86%) scale(1); }
 }
