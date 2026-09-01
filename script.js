@@ -32,18 +32,80 @@ if (rsvpNote) {
 function updateAttendanceFields() {
   const selected = document.querySelector('input[name="attendance"]:checked')?.value;
   if (!attendingFields) return;
-  const show = selected === 'yes';
+  const show = selected === 'yes' || selected === 'maybe';
   attendingFields.hidden = !show;
   attendingFields.querySelectorAll('input, textarea').forEach((field) => {
     field.disabled = !show;
   });
 }
 
-function showRsvpStatus(type, title, message) {
+function buildGoogleCalendarUrl() {
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: "Anastasiia & Zak's Wedding",
+    dates: '20270313/20270314',
+    details: "Anastasiia & Zak are getting married! Ceremony at 3:30 pm at St Andrew’s Greek Orthodox Church, followed by celebrations at Chateau Wyuna. More details: https://msasafonova.github.io/anastasiia-zak-wedding/",
+    location: 'Melbourne, Victoria, Australia'
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function downloadCalendarFile() {
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Anastasiia and Zak Wedding//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    'UID:anastasiia-zak-wedding-20270313@anastasiia-zak-wedding',
+    'DTSTAMP:20260901T000000Z',
+    'DTSTART;VALUE=DATE:20270313',
+    'DTEND;VALUE=DATE:20270314',
+    "SUMMARY:Anastasiia & Zak's Wedding",
+    'LOCATION:Melbourne\, Victoria\, Australia',
+    'DESCRIPTION:Ceremony at 3:30 pm at St Andrew’s Greek Orthodox Church\, followed by celebrations at Chateau Wyuna. More details: https://msasafonova.github.io/anastasiia-zak-wedding/',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'anastasiia-zak-wedding.ics';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function showRsvpStatus(type, title, message, showCalendar = false) {
   if (!rsvpStatus) return;
   rsvpStatus.hidden = false;
   rsvpStatus.dataset.state = type;
   rsvpStatus.innerHTML = `<strong>${title}</strong><span>${message}</span>`;
+
+  if (showCalendar) {
+    const calendarWrap = document.createElement('div');
+    calendarWrap.className = 'rsvp-calendar-actions';
+
+    const googleLink = document.createElement('a');
+    googleLink.className = 'primary-button rsvp-calendar-button';
+    googleLink.href = buildGoogleCalendarUrl();
+    googleLink.target = '_blank';
+    googleLink.rel = 'noopener';
+    googleLink.textContent = 'Add to Google Calendar';
+
+    const icsButton = document.createElement('button');
+    icsButton.className = 'primary-button rsvp-calendar-button rsvp-calendar-secondary';
+    icsButton.type = 'button';
+    icsButton.textContent = 'Apple / Outlook Calendar';
+    icsButton.addEventListener('click', downloadCalendarFile);
+
+    calendarWrap.append(googleLink, icsButton);
+    rsvpStatus.appendChild(calendarWrap);
+  }
+
   rsvpStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
@@ -57,11 +119,14 @@ rsvpForm?.addEventListener('submit', async (event) => {
   const submitButton = rsvpForm.querySelector('.rsvp-submit');
   const formData = new FormData(rsvpForm);
   const attendance = (formData.get('attendance') || '').toString();
+  const attendanceLabel = attendance === 'yes' ? 'Yes' : attendance === 'maybe' ? 'Maybe' : 'Sadly, no';
+  const potentiallyAttending = attendance === 'yes' || attendance === 'maybe';
+
   const submission = {
     name: (formData.get('name') || '').toString().trim(),
-    attending: attendance === 'yes' ? 'Yes' : 'Sadly, no',
-    guests: attendance === 'yes' ? (formData.get('guests') || '').toString().trim() : '',
-    dietary: attendance === 'yes' ? (formData.get('dietary') || '').toString().trim() : '',
+    attending: attendanceLabel,
+    guests: potentiallyAttending ? (formData.get('guests') || '').toString().trim() : '',
+    dietary: potentiallyAttending ? (formData.get('dietary') || '').toString().trim() : '',
     message: (formData.get('message') || '').toString().trim()
   };
 
@@ -81,7 +146,14 @@ rsvpForm?.addEventListener('submit', async (event) => {
 
     rsvpForm.reset();
     updateAttendanceFields();
-    showRsvpStatus('success', 'Thank you!', 'Your RSVP has been sent to Anastasiia & Zak. ♡');
+
+    if (attendance === 'yes') {
+      showRsvpStatus('success', 'We can’t wait!', 'Your RSVP has been sent. Add the wedding to your calendar so the date is safely saved. ♡', true);
+    } else if (attendance === 'maybe') {
+      showRsvpStatus('success', 'Fingers crossed!', 'Your “maybe” has been sent. Save the date in your calendar while you work it out. ♡', true);
+    } else {
+      showRsvpStatus('success', 'Thank you for letting us know', 'Your RSVP has been sent to Anastasiia & Zak. ♡');
+    }
   } catch (error) {
     showRsvpStatus('error', 'Something went wrong', 'Please try sending your RSVP again in a moment.');
   } finally {
