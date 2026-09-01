@@ -171,8 +171,8 @@ const photoGuestName = document.getElementById('photoGuestName');
 const photoSelection = document.getElementById('photoSelection');
 const photoUploadStatus = document.getElementById('photoUploadStatus');
 const photoUploadButton = document.getElementById('photoUploadButton');
-const MAX_PHOTO_SIZE = 15 * 1024 * 1024;
-const MAX_PHOTO_COUNT = 20;
+const MAX_MEDIA_SIZE = 30 * 1024 * 1024;
+const MAX_MEDIA_COUNT = 20;
 
 function safeFilePart(value) {
   return value.replace(/[^a-z0-9 _.-]/gi, '').trim().replace(/\s+/g, '-').slice(0, 40);
@@ -201,10 +201,15 @@ photoFiles?.addEventListener('change', () => {
   const files = Array.from(photoFiles.files || []);
   if (!photoSelection) return;
   if (!files.length) {
-    photoSelection.textContent = 'You can choose several photos at once.';
+    photoSelection.textContent = 'You can choose several photos or short videos at once. Up to 30 MB per file.';
     return;
   }
-  photoSelection.textContent = `${files.length} photo${files.length === 1 ? '' : 's'} selected.`;
+  const videos = files.filter((file) => file.type.startsWith('video/')).length;
+  const photos = files.length - videos;
+  const parts = [];
+  if (photos) parts.push(`${photos} photo${photos === 1 ? '' : 's'}`);
+  if (videos) parts.push(`${videos} video${videos === 1 ? '' : 's'}`);
+  photoSelection.textContent = `${parts.join(' and ')} selected.`;
 });
 
 photoUploadForm?.addEventListener('submit', async (event) => {
@@ -212,17 +217,23 @@ photoUploadForm?.addEventListener('submit', async (event) => {
   const files = Array.from(photoFiles?.files || []);
 
   if (!files.length) {
-    showPhotoStatus('Please choose at least one photo.', 'error');
+    showPhotoStatus('Please choose at least one photo or video.', 'error');
     return;
   }
-  if (files.length > MAX_PHOTO_COUNT) {
-    showPhotoStatus(`Please upload up to ${MAX_PHOTO_COUNT} photos at a time.`, 'error');
+  if (files.length > MAX_MEDIA_COUNT) {
+    showPhotoStatus(`Please upload up to ${MAX_MEDIA_COUNT} files at a time.`, 'error');
     return;
   }
 
-  const tooLarge = files.find((file) => file.size > MAX_PHOTO_SIZE);
+  const unsupported = files.find((file) => !file.type.startsWith('image/') && !file.type.startsWith('video/'));
+  if (unsupported) {
+    showPhotoStatus(`${unsupported.name} is not a supported photo or video file.`, 'error');
+    return;
+  }
+
+  const tooLarge = files.find((file) => file.size > MAX_MEDIA_SIZE);
   if (tooLarge) {
-    showPhotoStatus(`${tooLarge.name} is too large. Please keep each photo under 15 MB.`, 'error');
+    showPhotoStatus(`${tooLarge.name} is too large for this uploader. Please keep each file under 30 MB.`, 'error');
     return;
   }
 
@@ -239,7 +250,7 @@ photoUploadForm?.addEventListener('submit', async (event) => {
       showPhotoStatus(`Uploading ${index + 1} of ${files.length}: ${file.name}`);
       const base64 = await fileToBase64(file);
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-      const originalName = safeFilePart(file.name) || `photo-${index + 1}`;
+      const originalName = safeFilePart(file.name) || `media-${index + 1}`;
       const fileName = `${guest ? `${guest}-` : ''}${timestamp}-${originalName}`;
 
       await fetch(PHOTO_UPLOAD_ENDPOINT, {
@@ -255,14 +266,14 @@ photoUploadForm?.addEventListener('submit', async (event) => {
     }
 
     photoUploadForm.reset();
-    if (photoSelection) photoSelection.textContent = 'You can choose several photos at once.';
-    showPhotoStatus(`Thank you! ${files.length === 1 ? 'Your photo has' : 'Your photos have'} been uploaded ♡`, 'success');
+    if (photoSelection) photoSelection.textContent = 'You can choose several photos or short videos at once. Up to 30 MB per file.';
+    showPhotoStatus(`Thank you! ${files.length === 1 ? 'Your file has' : 'Your files have'} been uploaded ♡`, 'success');
   } catch (error) {
     showPhotoStatus('Something went wrong while uploading. Please try again.', 'error');
   } finally {
     if (photoUploadButton) {
       photoUploadButton.disabled = false;
-      photoUploadButton.textContent = 'Upload photos ♡';
+      photoUploadButton.textContent = 'Upload photos & videos ♡';
     }
   }
 });
