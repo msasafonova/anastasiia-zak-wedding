@@ -1,0 +1,117 @@
+.hero {
+  overflow: visible;
+}
+
+.envelope-stage {
+  padding-top: 70px;
+  padding-bottom: 120px;
+}
+
+.envelope {
+  overflow: visible;
+}
+
+.invitation-card {
+  z-index: 2;
+  bottom: 6%;
+  height: 84%;
+  transform: translateY(18%);
+  opacity: 0;
+  transition:
+    transform 1.35s cubic-bezier(.18,.82,.22,1) .52s,
+    opacity .35s ease .42s,
+    box-shadow .45s ease 1.15s;
+  will-change: transform, opacity;
+}
+
+.envelope.open .invitation-card {
+  transform: translateY(-92%);
+  opacity: 1;
+  z-index: 9;
+  box-shadow: 0 28px 48px rgba(71,47,29,.24);
+}
+
+.envelope.open .envelope-front {
+  z-index: 6;
+}
+
+.envelope.open .envelope-flap {
+  z-index: 1;
+}
+
+.wax-seal {
+  top: 61%;
+}
+
+.open-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 42px;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 12;
+  min-width: 110px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(248,240,227,.88);
+  box-shadow: 0 8px 22px rgba(68,45,28,.10);
+  backdrop-filter: blur(3px);
+}
+
+.envelope.open + .open-hint {
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  pointer-events: none;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.view-button {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .45s ease 1.42s, transform .45s ease 1.42s;
+}
+
+.envelope.open .view-button {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 980px;
+  }
+
+  .envelope-stage {
+    margin-top: 150px;
+    padding-top: 40px;
+    padding-bottom: 150px;
+  }
+
+  .envelope.open .invitation-card {
+    transform: translateY(-108%);
+  }
+
+  .open-hint {
+    bottom: 72px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero {
+    min-height: 900px;
+  }
+
+  .envelope-stage {
+    margin-top: 155px;
+    padding-bottom: 155px;
+  }
+
+  .envelope.open .invitation-card {
+    transform: translateY(-116%);
+  }
+
+  .open-hint {
+    bottom: 78px;
+  }
+}
