@@ -8,7 +8,7 @@ body::before,body::after{content:none!important}
 /* HERO — explicit approved shawl image, larger on desktop and smaller on mobile. */
 .hero{min-height:100svh;background:var(--hero-paper);overflow:hidden;position:relative}
 .hero::before,.hero::after{content:none!important;background:none!important}
-.hero-shawl{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;z-index:15!important;left:-22px!important;top:72px!important;width:min(62vw,820px)!important;height:auto!important;max-width:none!important;pointer-events:none!important;user-select:none!important}
+.hero-shawl{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;z-index:15!important;left:-22px!important;top:72px!important;width:min(95vw,1250px)!important;height:auto!important;max-width:none!important;pointer-events:none!important;user-select:none!important}
 .envelope-stage{z-index:16;transform:translateY(7vh)}
 .envelope{filter:drop-shadow(0 27px 30px rgba(66,44,28,.22))}
 
@@ -31,7 +31,7 @@ body::before,body::after{content:none!important}
 @media(max-width:760px){
  .site-header{background:linear-gradient(180deg,var(--hero-paper),rgba(250,243,233,.82) 72%,transparent)}
  .hero{padding-left:12px;padding-right:12px;background:var(--hero-paper)}
- .hero-shawl{left:-6px!important;top:82px!important;width:54vw!important;min-width:205px!important;max-width:310px!important}
+ .hero-shawl{left:-6px!important;top:82px!important;width:88vw!important;min-width:330px!important;max-width:500px!important}
  .envelope-stage{transform:translateY(10vh)}
  .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
  .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
