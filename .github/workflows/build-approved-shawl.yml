@@ -3,7 +3,7 @@ name: Build approved shawl asset
 on:
   push:
     paths:
-      - 'assets/shawl-approved.part*.txt'
+      - 'assets/shawl-approved-v2.webp.b64'
       - '.github/workflows/build-approved-shawl.yml'
   workflow_dispatch:
 
@@ -15,20 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Rebuild approved WebP asset
+      - name: Rebuild clean approved WebP asset
         run: |
-          cat assets/shawl-approved.part0.txt \
-              assets/shawl-approved.part1.txt \
-              assets/shawl-approved.part2.txt \
-              assets/shawl-approved.part3.txt \
-              assets/shawl-approved.part4.txt \
-              assets/shawl-approved.part5.txt \
-              assets/shawl-approved.part6.txt | base64 --decode > assets/shawl-approved.webp
+          base64 --decode assets/shawl-approved-v2.webp.b64 > assets/shawl-approved-v2.webp
       - name: Commit generated asset
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/shawl-approved.webp
+          git add assets/shawl-approved-v2.webp
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Build approved shawl asset'
+          git commit -m 'Build clean approved shawl asset'
           git push
