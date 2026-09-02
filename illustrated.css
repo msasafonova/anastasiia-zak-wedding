@@ -1,14 +1,15 @@
 /* Layout layer. Envelope animation and functional components remain in style.css. */
-:root{--wc-paper:#f7efe3;--wc-ink:#123b68}
+:root{--wc-paper:#f7efe3;--wc-ink:#123b68;--hero-paper:#faf3e9}
 body{position:relative;background:radial-gradient(circle at 50% 7%,rgba(255,255,255,.78),transparent 28%),linear-gradient(180deg,#faf3e9 0%,#f3e5d2 100%)}
 body::before,body::after{content:none!important}
 .site-header,main{position:relative;z-index:2}
-.site-header{background:linear-gradient(180deg,rgba(250,243,233,.97),rgba(250,243,233,.45) 72%,transparent)}
+.site-header{background:linear-gradient(180deg,var(--hero-paper),rgba(250,243,233,.72) 72%,transparent)}
 
-/* HERO — deliberately contains no decorative image assets. */
-.hero{min-height:100svh;background:none;overflow:hidden;position:relative}
+/* HERO — approved shawl, with its former black area baked to the same cream as the hero. */
+.hero{min-height:100svh;background:var(--hero-paper);overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;z-index:1;left:-1.5vw;top:72px;width:min(62vw,820px);aspect-ratio:1.5/1;background:url('assets/shawl-cream.webp?v=20260902-render1') left top/contain no-repeat;pointer-events:none}
 .hero::after{content:none!important;background:none!important}
-.envelope-stage{z-index:6}
+.envelope-stage{z-index:6;transform:translateY(7vh)}
 .envelope{filter:drop-shadow(0 27px 30px rgba(66,44,28,.22))}
 
 /* Remove mismatched decorative images until each one is approved separately. */
@@ -28,8 +29,10 @@ body::before,body::after{content:none!important}
 .closing{position:relative;z-index:2;padding-bottom:110px}
 
 @media(max-width:760px){
- .site-header{background:linear-gradient(180deg,rgba(250,243,233,.99),rgba(250,243,233,.54) 72%,transparent)}
- .hero{padding-left:12px;padding-right:12px}
+ .site-header{background:linear-gradient(180deg,var(--hero-paper),rgba(250,243,233,.82) 72%,transparent)}
+ .hero{padding-left:12px;padding-right:12px;background:var(--hero-paper)}
+ .hero::before{left:-2px;top:82px;width:54vw;min-width:205px;max-width:310px;aspect-ratio:1.5/1;background-size:contain}
+ .envelope-stage{transform:translateY(10vh)}
  .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
  .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
  .venue-details,.timeline-story,.rsvp-showcase,.actions{width:calc(100% - 22px);padding-left:20px;padding-right:20px}
