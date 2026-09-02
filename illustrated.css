@@ -1,31 +1,66 @@
-/* Painterly watercolor layer. Envelope animation and functional components remain in style.css. */
-body{position:relative;background:#f5ecde;background-image:radial-gradient(circle at 50% 8%,rgba(255,255,255,.72),transparent 28%),linear-gradient(180deg,#f9f1e6 0%,#f4e7d5 100%)}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url('assets/watercolor-border.svg?v=20260902-wc1') top center/100% 100% no-repeat;opacity:.92}
-body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 32%,rgba(255,252,246,.58),rgba(255,252,246,.08) 42%,transparent 67%)}
+/* Watercolor illustration layer. Keeps envelope animation and all functional components in style.css. */
+:root{--wc-paper:#f7efe3;--wc-ink:#123b68}
+body{position:relative;background:radial-gradient(circle at 50% 7%,rgba(255,255,255,.78),transparent 28%),linear-gradient(180deg,#faf3e9 0%,#f3e5d2 100%)}
+body::before,body::after{content:none!important}
 .site-header,main{position:relative;z-index:2}
-.site-header{background:linear-gradient(180deg,rgba(249,242,232,.93),rgba(249,242,232,.28) 72%,transparent)}
-/* Remove the old flat/cartoon SVG illustrations completely. */
-.hero .shawl-corner,.hero .greek-sky,.hero .olive,.invitation-intro .intro-folk-corner,.invitation-intro .intro-birch{display:none!important}
-.hero{min-height:100svh;background:none}
+.site-header{background:linear-gradient(180deg,rgba(250,243,233,.96),rgba(250,243,233,.42) 72%,transparent)}
+
+/* Real raster watercolor artwork: no stretched full-screen bitmap. */
+.hero{min-height:100svh;background:none;overflow:hidden}
+.hero .shawl-corner{display:block!important;content:url('https://webstockreview.net/images/flower-watercolor-png-14.png');position:absolute;left:-36px;top:62px;width:min(32vw,390px);height:auto;transform:rotate(-7deg);border:0!important;border-radius:0!important;background:none!important;opacity:.95;filter:drop-shadow(0 12px 16px rgba(70,47,30,.08));object-fit:contain}
+.hero .greek-sky{display:block!important;content:url('https://img.clipart-library.com/24/96edc8b0-ac8d-4989-b048-998b33419376.png');position:absolute;right:-28px;top:96px;width:min(28vw,350px);height:auto;border:0!important;border-radius:0!important;background:none!important;opacity:.9;filter:drop-shadow(0 12px 18px rgba(37,73,105,.08));object-fit:contain}
+.hero .olive{display:none!important}
 .envelope-stage{z-index:6}
 .envelope{filter:drop-shadow(0 27px 30px rgba(66,44,28,.22))}
-.invitation-intro{width:min(1120px,calc(100% - 56px));min-height:760px;margin-top:34px;margin-bottom:82px;border:1px solid rgba(45,72,96,.22);background:linear-gradient(180deg,rgba(252,247,239,.92),rgba(247,237,221,.88));box-shadow:0 26px 60px rgba(69,48,30,.11);backdrop-filter:blur(1px)}
+
+.invitation-intro{position:relative;width:min(1120px,calc(100% - 56px));min-height:760px;margin-top:34px;margin-bottom:82px;border:1px solid rgba(45,72,96,.22);background:linear-gradient(180deg,rgba(252,247,239,.94),rgba(247,237,221,.9));box-shadow:0 26px 60px rgba(69,48,30,.11);overflow:hidden}
+.invitation-intro .intro-folk-corner{display:block!important;content:url('https://webstockreview.net/images/flower-watercolor-png-14.png');width:280px;height:auto;background:none!important;opacity:.55;filter:none}
+.invitation-intro .intro-folk-left{left:-72px;top:-56px;transform:rotate(-15deg)}
+.invitation-intro .intro-folk-right{right:-75px;bottom:-72px;left:auto;top:auto;transform:rotate(165deg)}
+.invitation-intro .intro-birch{display:block!important;content:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA5L3Jhd3BpeGVsb2ZmaWNlMTJfd2F0ZXJjb2xvcl9pbGx1c3RyYXRpb25fb2ZfYW5faXNvbGF0ZWRfYmlyY2hfdF81OTk2NzQ2Yy02YzA1LTRhYWMtYmM4Yy04YjY4NmIwZTRlNzIucG5n.png');width:180px;height:auto;bottom:-22px;opacity:.48;background:none!important;object-fit:contain}
+.invitation-intro .intro-birch-left{left:-24px;transform:rotate(-4deg)}
+.invitation-intro .intro-birch-right{right:-24px;left:auto;transform:scaleX(-1) rotate(-4deg)}
 .invitation-intro .intro-greek-band{bottom:44px;opacity:.72}
-.details-showcase,.venue-details,.timeline-story,.dress-showcase,.rsvp-showcase,.actions{position:relative;background:rgba(251,246,238,.87);backdrop-filter:blur(1px);box-shadow:0 18px 42px rgba(77,53,34,.055)}
+
+.details-showcase,.venue-details,.timeline-story,.dress-showcase,.rsvp-showcase,.actions{position:relative;background:rgba(251,246,238,.9);box-shadow:0 18px 42px rgba(77,53,34,.055)}
 .details-showcase{border:1px solid rgba(18,59,104,.16);margin-bottom:80px;overflow:hidden}
+.details-showcase::before,.details-showcase::after,.venue-details::before,.timeline-story::after,.dress-showcase::before,.rsvp-showcase::after,.actions::before{content:"";position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:contain;z-index:0}
+.details-showcase::before{left:-52px;bottom:-76px;width:230px;height:300px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA4L3Jhd3BpeGVsX29mZmljZV8zMF93YXRlcmNvbG9yX2FfbGVtb25fdHJlZV9icmFuY2hfY2xpcGFydF93aGl0ZV82MzczMTNmNy05MDk4LTQwZjgtYjFmZS03MWEyZGZiZmY4YjkucG5n.png');opacity:.42}
+.details-showcase::after{right:-40px;top:-40px;width:210px;height:240px;background-image:url('https://webstockreview.net/images/flower-watercolor-png-14.png');opacity:.25}
+.details-showcase>*{position:relative;z-index:1}
+
 .venue-details{padding:72px 54px;margin-bottom:68px;border-top:1px solid rgba(18,59,104,.13);border-bottom:1px solid rgba(18,59,104,.13)}
+.venue-details::before{left:-105px;top:120px;width:285px;height:310px;background-image:url('https://img.clipart-library.com/24/96edc8b0-ac8d-4989-b048-998b33419376.png');opacity:.18}
+.venue-details>*{position:relative;z-index:1}
 .timeline-story{padding-left:48px;padding-right:48px;border:1px solid rgba(18,59,104,.13)}
+.timeline-story::after{right:-55px;bottom:-32px;width:215px;height:330px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA5L3Jhd3BpeGVsb2ZmaWNlMTJfd2F0ZXJjb2xvcl9pbGx1c3RyYXRpb25fb2ZfYW5faXNvbGF0ZWRfYmlyY2hfdF81OTk2NzQ2Yy02YzA1LTRhYWMtYmM4Yy04YjY4NmIwZTRlNzIucG5n.png');opacity:.2}
 .dress-showcase{border-top:1px solid rgba(18,59,104,.13);border-bottom:1px solid rgba(18,59,104,.13)}
+.dress-showcase::before{left:-62px;bottom:-58px;width:210px;height:245px;background-image:url('https://webstockreview.net/images/flower-watercolor-png-14.png');opacity:.2}
 .rsvp-showcase{margin-top:72px;padding:72px 66px;border:1px solid rgba(18,59,104,.16)}
-.actions{margin-top:58px;margin-bottom:58px;padding:44px;border:1px solid rgba(18,59,104,.16)}
-.action-card{background:rgba(255,251,244,.82)}
+.rsvp-showcase::after{right:-58px;top:-55px;width:210px;height:260px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA4L3Jhd3BpeGVsX29mZmljZV8zMF93YXRlcmNvbG9yX2FfbGVtb25fdHJlZV9icmFuY2hfY2xpcGFydF93aGl0ZV82MzczMTNmNy05MDk4LTQwZjgtYjFmZS03MWEyZGZiZmY4YjkucG5n.png');opacity:.25}
+.actions{margin-top:58px;margin-bottom:58px;padding:44px;border:1px solid rgba(18,59,104,.16);overflow:hidden}
+.actions::before{left:-42px;bottom:-44px;width:185px;height:245px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsb2ZmaWNlMTlfd2F0ZXJjb2xvcl9rYW5nYXJvb19pc29sYXRlZF9vbl93aGl0ZV9iYWNrZ3JvdV8xOGQ4N2M3OC1kZDBlLTQwMDctYjg4MC1lNzJkZjA4NjIwOTkucG5n.png');opacity:.22}
+.action-card{position:relative;z-index:1;background:rgba(255,251,244,.84)}
 .closing{position:relative;z-index:2;padding-bottom:110px}
+
 @media(max-width:760px){
- body::before{background-size:auto 100%;background-position:50% top;opacity:.84}
- .site-header{background:linear-gradient(180deg,rgba(249,242,232,.97),rgba(249,242,232,.48) 72%,transparent)}
+ .site-header{background:linear-gradient(180deg,rgba(250,243,233,.98),rgba(250,243,233,.5) 72%,transparent)}
  .hero{padding-left:12px;padding-right:12px}
+ .hero .shawl-corner{width:190px;left:-62px;top:70px;opacity:.78}
+ .hero .greek-sky{width:170px;right:-42px;top:110px;opacity:.78}
  .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
+ .invitation-intro .intro-folk-corner{width:170px;opacity:.34}
+ .invitation-intro .intro-folk-left{left:-68px;top:-42px}
+ .invitation-intro .intro-folk-right{right:-72px;bottom:-58px}
+ .invitation-intro .intro-birch{width:105px;opacity:.28}
  .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
+ .details-showcase::before{left:-58px;bottom:-62px;width:170px;height:215px;opacity:.28}
+ .details-showcase::after{right:-58px;top:-42px;width:150px;height:170px;opacity:.2}
  .venue-details,.timeline-story,.rsvp-showcase,.actions{width:calc(100% - 22px);padding-left:20px;padding-right:20px}
- .actions{padding:26px 18px;margin-top:42px;overflow:hidden}
+ .venue-details::before{left:-88px;top:130px;width:170px;height:200px;opacity:.14}
+ .timeline-story::after{right:-72px;width:150px;height:245px;opacity:.16}
+ .dress-showcase::before{left:-72px;width:155px;height:190px;opacity:.18}
+ .rsvp-showcase::after{right:-72px;width:160px;height:205px;opacity:.2}
+ .actions{padding:26px 18px;margin-top:42px}
+ .actions::before{left:-45px;bottom:-34px;width:135px;height:180px;opacity:.17}
 }
