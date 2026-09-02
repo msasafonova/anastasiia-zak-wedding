@@ -31,7 +31,7 @@ body::before,body::after{content:none!important}
 @media(max-width:760px){
  .site-header{background:linear-gradient(180deg,var(--hero-paper),rgba(250,243,233,.82) 72%,transparent)}
  .hero{padding-left:12px;padding-right:12px;background:var(--hero-paper)}
- .hero-shawl{left:-12px!important;top:-85px!important;width:96vw!important;min-width:360px!important;max-width:560px!important}
+ .hero-shawl{left:-12px!important;top:70px!important;width:96vw!important;min-width:360px!important;max-width:560px!important}
  .envelope-stage{transform:translateY(10vh)}
  .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
  .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
