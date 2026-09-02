@@ -1,0 +1,1 @@
+Temporary note; hero shawl asset is being replaced with the approved user-provided image.
