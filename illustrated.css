@@ -5,16 +5,16 @@ body::before,body::after{content:none!important}
 .site-header,main{position:relative;z-index:2}
 .site-header{background:linear-gradient(180deg,rgba(250,243,233,.97),rgba(250,243,233,.45) 72%,transparent)}
 
-/* HERO — approved transparent Pavlovo Posad shawl plus the existing painterly church/kangaroo artwork. */
+/* HERO — approved shawl only. Any beige/table area and paint dots in the source are clipped away. */
 .hero{min-height:100svh;background:none;overflow:hidden;position:relative}
-.hero .shawl-corner{display:block!important;position:absolute;z-index:1;left:-28px;top:54px;width:min(58vw,760px);height:auto;content:url('assets/shawl-approved.webp?v=20260902-approved1');clip-path:none!important;transform:none;transform-origin:top left;object-fit:contain;mix-blend-mode:normal!important;filter:drop-shadow(10px 16px 20px rgba(72,45,28,.10))}
-.hero .greek-sky{display:block!important;position:absolute;z-index:1;right:-36px;top:70px;width:min(39vw,500px);height:auto;content:url('https://img.clipart-library.com/24/96edc8b0-ac8d-4989-b048-998b33419376.png');border:0!important;background:none!important;object-fit:contain;mix-blend-mode:multiply;filter:brightness(1.18) contrast(1.08) saturate(1.08) drop-shadow(0 14px 22px rgba(37,73,105,.10))}
+.hero .shawl-corner{display:block!important;position:absolute;z-index:1;left:-28px;top:54px;width:min(58vw,760px);height:auto;content:url('assets/shawl-approved.webp?v=20260902-cleanclip1');clip-path:polygon(0 0,78% 0,69% 25%,61% 46%,52% 66%,41% 84%,26% 100%,0 100%)!important;transform:none!important;transform-origin:top left;object-fit:contain;mix-blend-mode:normal!important;filter:drop-shadow(10px 16px 20px rgba(72,45,28,.10))}
+.hero .greek-sky{display:none!important}
 .hero .olive-left,.hero .olive-right{display:none!important}
-.hero::after{content:"";position:absolute;z-index:2;right:4%;bottom:2%;width:min(24vw,300px);height:min(38vw,430px);background:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsb2ZmaWNlMTlfd2F0ZXJjb2xvcl9rYW5nYXJvb19pc29sYXRlZF9vbl93aGl0ZV9iYWNrZ3JvdV8xOGQ4N2M3OC1kZDBlLTQwMDctYjg4MC1lNzJkZjA4NjIwOTkucG5n.png') center bottom/contain no-repeat;pointer-events:none;mix-blend-mode:multiply;filter:brightness(1.72) contrast(1.12) saturate(1.12) drop-shadow(0 12px 18px rgba(72,52,35,.08))}
+.hero::after{content:none!important;background:none!important}
 .envelope-stage{z-index:6}
 .envelope{filter:drop-shadow(0 27px 30px rgba(66,44,28,.22))}
 
-/* Remove the mismatched decorative images from the rest of the page until they are replaced by matching artwork. */
+/* Remove mismatched decorative images until each one is approved separately. */
 .invitation-intro .intro-folk-corner,.invitation-intro .intro-birch{display:none!important}
 .details-showcase::before,.details-showcase::after,.venue-details::before,.timeline-story::after,.dress-showcase::before,.rsvp-showcase::after,.actions::before{content:none!important;background:none!important}
 
@@ -33,9 +33,7 @@ body::before,body::after{content:none!important}
 @media(max-width:760px){
  .site-header{background:linear-gradient(180deg,rgba(250,243,233,.99),rgba(250,243,233,.54) 72%,transparent)}
  .hero{padding-left:12px;padding-right:12px}
- .hero .shawl-corner{left:-48px;top:58px;width:520px;max-width:none;clip-path:none!important;transform:none;mix-blend-mode:normal!important}
- .hero .greek-sky{width:285px;right:-72px;top:92px;filter:brightness(1.2) contrast(1.07) saturate(1.08) drop-shadow(0 10px 16px rgba(37,73,105,.08))}
- .hero::after{right:-28px;bottom:1%;width:195px;height:285px;filter:brightness(1.78) contrast(1.1) saturate(1.1) drop-shadow(0 10px 14px rgba(72,52,35,.07))}
+ .hero .shawl-corner{left:-48px;top:58px;width:520px;max-width:none;clip-path:polygon(0 0,77% 0,68% 24%,60% 45%,51% 64%,40% 82%,25% 100%,0 100%)!important;transform:none!important;mix-blend-mode:normal!important}
  .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
  .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
  .venue-details,.timeline-story,.rsvp-showcase,.actions{width:calc(100% - 22px);padding-left:20px;padding-right:20px}
