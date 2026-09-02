@@ -1,75 +1,59 @@
-/* Watercolor-inspired illustration layer. Keeps envelope animation and all functional components in style.css. */
+/* Watercolor illustration layer. Envelope animation and functional components remain in style.css. */
 :root{--wc-paper:#f7efe3;--wc-ink:#123b68}
-body{position:relative;background:radial-gradient(circle at 50% 7%,rgba(255,255,255,.8),transparent 28%),linear-gradient(180deg,#faf3e9 0%,#f3e5d2 100%)}
+body{position:relative;background:radial-gradient(circle at 50% 7%,rgba(255,255,255,.78),transparent 28%),linear-gradient(180deg,#faf3e9 0%,#f3e5d2 100%)}
 body::before,body::after{content:none!important}
 .site-header,main{position:relative;z-index:2}
-.site-header{background:linear-gradient(180deg,rgba(250,243,233,.97),rgba(250,243,233,.45) 72%,transparent)}
+.site-header{background:linear-gradient(180deg,rgba(250,243,233,.96),rgba(250,243,233,.42) 72%,transparent)}
 
-/* HERO — large decor, true transparent local assets, no white boxes. */
-.hero{min-height:100svh;background:none;overflow:hidden;isolation:isolate}
-.hero .shawl-corner{display:none!important}
-.hero::before{content:"";position:absolute;z-index:1;left:-10px;top:52px;width:min(43vw,560px);height:min(47vw,610px);background:
- linear-gradient(135deg,rgba(250,239,222,.97),rgba(238,218,193,.95)),
- url('assets/folk-flowers.svg') 6% 8%/82% auto no-repeat;
- clip-path:polygon(0 0,100% 0,68% 67%,0 100%);filter:drop-shadow(8px 10px 14px rgba(82,55,36,.11));pointer-events:none}
-.hero::after{content:"";position:absolute;z-index:1;left:14.5%;top:16.5%;width:min(31vw,400px);height:230px;background:repeating-linear-gradient(90deg,rgba(137,104,73,.66) 0 2px,transparent 2px 11px);transform:rotate(43deg);transform-origin:left top;clip-path:polygon(0 0,100% 0,100% 29%,0 100%);opacity:.8;pointer-events:none}
-.hero .greek-sky{display:block!important;content:url('assets/greek-church.svg');position:absolute;z-index:1;right:-42px;top:64px;width:min(38vw,500px);height:auto;border:0!important;border-radius:0!important;background:none!important;opacity:.9;filter:drop-shadow(0 12px 18px rgba(37,73,105,.09));object-fit:contain}
-.hero .olive{display:block!important;position:absolute;z-index:1;font-size:0;color:transparent;pointer-events:none;background-repeat:no-repeat;background-size:contain}
-.hero .olive-left{left:-32px;bottom:-48px;width:min(27vw,350px);height:min(44vw,540px);background-image:url('assets/olive-lemons.svg');background-position:left bottom;opacity:.82;transform:rotate(-6deg)}
-.hero .olive-right{right:-42px;bottom:-24px;width:min(30vw,390px);height:min(60vw,740px);background-image:url('assets/kangaroo.svg'),url('assets/birch-sprig.svg');background-size:62% auto,74% auto;background-position:62% 78%,100% 100%;opacity:.72}
+/* Hero artwork: painterly assets only. */
+.hero{min-height:100svh;background:none;overflow:hidden;position:relative}
+.hero .shawl-corner{display:block!important;position:absolute;z-index:1;left:-95px;top:-65px;width:min(47vw,610px);height:auto;content:url('https://grizly.club/uploads/posts/2022-12/1670516326_grizly-club-p-russkie-platki-s-uzorami-3.jpg');clip-path:polygon(0 0,100% 0,78% 78%,0 100%);transform:rotate(-2deg);transform-origin:top left;filter:drop-shadow(10px 16px 20px rgba(72,45,28,.12));object-fit:cover}
+.hero .greek-sky{display:block!important;position:absolute;z-index:1;right:-24px;top:52px;width:min(39vw,500px);height:auto;content:url('https://images.rawpixel.com/dark_image_png_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI2LTAzL3NyLWltYWdlLTA0MDMyNi1oaTEtcy0xMzktbW1pc3hweDQucG5n.png');border:0!important;background:none!important;filter:drop-shadow(0 14px 22px rgba(37,73,105,.12));object-fit:contain}
+.hero .olive-left,.hero .olive-right{display:block!important;position:absolute;z-index:1;font-size:0;color:transparent;background-repeat:no-repeat;background-size:contain;pointer-events:none}
+.hero .olive-left{left:-28px;bottom:4%;width:300px;height:300px;background-image:url('https://toppng.com/public/uploads/preview/lemonade-watercolor-png-graphic-transparent-stock-water-color-lemon-11562935147blrwy6pb70.png');background-position:left bottom;opacity:.82;transform:rotate(-8deg)}
+.hero .olive-right{right:-20px;bottom:-2%;width:300px;height:560px;background-image:url('https://images.rawpixel.com/image_png_social_portrait/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA5L3Jhd3BpeGVsX29mZmljZV8yOV9zb2Z0X2NvbG9yX3dhdGVyY29sb3JfaWxsdXN0cmF0aW9uX29mX2Ffc2lsdl9iYmE1ODE1NC0wOTczLTRhNWUtYTk1YS1hYzMyMDcyY2RkOTQucG5n.png');background-position:right bottom;opacity:.76}
+.hero::after{content:"";position:absolute;z-index:2;right:62px;bottom:3%;width:260px;height:360px;background:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsb2ZmaWNlMTlfd2F0ZXJjb2xvcl9rYW5nYXJvb19pc29sYXRlZF9vbl93aGl0ZV9iYWNrZ3JvdV8xOGQ4N2M3OC1kZDBlLTQwMDctYjg4MC1lNzJkZjA4NjIwOTkucG5n.png') center bottom/contain no-repeat;pointer-events:none;filter:drop-shadow(0 12px 18px rgba(72,52,35,.09))}
 .envelope-stage{z-index:6}
 .envelope{filter:drop-shadow(0 27px 30px rgba(66,44,28,.22))}
 
+/* Invitation panel and subsequent sections */
 .invitation-intro{position:relative;width:min(1120px,calc(100% - 56px));min-height:760px;margin-top:34px;margin-bottom:82px;border:1px solid rgba(45,72,96,.22);background:linear-gradient(180deg,rgba(252,247,239,.94),rgba(247,237,221,.9));box-shadow:0 26px 60px rgba(69,48,30,.11);overflow:hidden}
-.invitation-intro .intro-folk-corner{display:block!important;content:url('assets/folk-flowers.svg');width:360px;height:auto;background:none!important;opacity:.5;filter:none}
-.invitation-intro .intro-folk-left{left:-92px;top:-78px;transform:rotate(-10deg)}
-.invitation-intro .intro-folk-right{right:-90px;bottom:-92px;left:auto;top:auto;transform:rotate(165deg)}
-.invitation-intro .intro-birch{display:block!important;content:url('assets/birch-sprig.svg');width:240px;height:auto;bottom:-28px;opacity:.5;background:none!important;object-fit:contain}
-.invitation-intro .intro-birch-left{left:-36px;transform:rotate(-4deg)}
-.invitation-intro .intro-birch-right{right:-36px;left:auto;transform:scaleX(-1) rotate(-4deg)}
+.invitation-intro .intro-folk-corner{display:none!important}
+.invitation-intro .intro-birch{display:block!important;width:230px;height:auto;content:url('https://images.rawpixel.com/image_png_social_portrait/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA5L3Jhd3BpeGVsX29mZmljZV8yOV9zb2Z0X2NvbG9yX3dhdGVyY29sb3JfaWxsdXN0cmF0aW9uX29mX2Ffc2lsdl9iYmE1ODE1NC0wOTczLTRhNWUtYTk1YS1hYzMyMDcyY2RkOTQucG5n.png');bottom:-34px;opacity:.28;object-fit:contain}
+.invitation-intro .intro-birch-left{left:-45px;transform:rotate(-4deg)}
+.invitation-intro .intro-birch-right{right:-45px;left:auto;transform:scaleX(-1) rotate(-4deg)}
 .invitation-intro .intro-greek-band{bottom:44px;opacity:.72}
-
 .details-showcase,.venue-details,.timeline-story,.dress-showcase,.rsvp-showcase,.actions{position:relative;background:rgba(251,246,238,.9);box-shadow:0 18px 42px rgba(77,53,34,.055)}
 .details-showcase{border:1px solid rgba(18,59,104,.16);margin-bottom:80px;overflow:hidden}
-.details-showcase::before,.details-showcase::after,.venue-details::before,.timeline-story::after,.dress-showcase::before,.rsvp-showcase::after,.actions::before{content:"";position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:contain;z-index:0}
-.details-showcase::before{left:-42px;bottom:-58px;width:300px;height:360px;background-image:url('assets/olive-lemons.svg');opacity:.34}
-.details-showcase::after{right:-28px;top:-32px;width:260px;height:300px;background-image:url('assets/folk-flowers.svg');opacity:.2}
+.details-showcase::before,.timeline-story::after,.rsvp-showcase::after,.actions::before{content:"";position:absolute;pointer-events:none;background-repeat:no-repeat;background-size:contain;z-index:0}
+.details-showcase::before{left:-70px;bottom:-88px;width:280px;height:300px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA1L3Jhd3BpeGVsX29mZmljZV8yOV93YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9hX2JyYW5jaF9vZl9vbGl2ZV80YjYzMWU0MC0yNmVmLTQzNDUtYjAyOS1hMjBjYWNmM2IwZmUucG5n.png');opacity:.34}
 .details-showcase>*{position:relative;z-index:1}
 .venue-details{padding:72px 54px;margin-bottom:68px;border-top:1px solid rgba(18,59,104,.13);border-bottom:1px solid rgba(18,59,104,.13)}
-.venue-details::before{left:-98px;top:110px;width:360px;height:390px;background-image:url('assets/greek-church.svg');opacity:.16}
-.venue-details>*{position:relative;z-index:1}
 .timeline-story{padding-left:48px;padding-right:48px;border:1px solid rgba(18,59,104,.13)}
-.timeline-story::after{right:-50px;bottom:-24px;width:270px;height:390px;background-image:url('assets/birch-sprig.svg');opacity:.2}
+.timeline-story::after{right:-40px;bottom:-40px;width:230px;height:330px;background-image:url('https://images.rawpixel.com/image_png_social_portrait/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA5L3Jhd3BpeGVsX29mZmljZV8yOV9zb2Z0X2NvbG9yX3dhdGVyY29sb3JfaWxsdXN0cmF0aW9uX29mX2Ffc2lsdl9iYmE1ODE1NC0wOTczLTRhNWUtYTk1YS1hYzMyMDcyY2RkOTQucG5n.png');opacity:.2}
 .dress-showcase{border-top:1px solid rgba(18,59,104,.13);border-bottom:1px solid rgba(18,59,104,.13)}
-.dress-showcase::before{left:-46px;bottom:-42px;width:260px;height:300px;background-image:url('assets/folk-flowers.svg');opacity:.18}
 .rsvp-showcase{margin-top:72px;padding:72px 66px;border:1px solid rgba(18,59,104,.16)}
-.rsvp-showcase::after{right:-45px;top:-48px;width:270px;height:320px;background-image:url('assets/olive-lemons.svg');opacity:.22}
+.rsvp-showcase::after{right:-55px;top:-55px;width:220px;height:250px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA1L3Jhd3BpeGVsX29mZmljZV8yOV93YXRlcmNvbG9yX2lsbHVzdHJhdGlvbl9vZl9hX2JyYW5jaF9vZl9vbGl2ZV80YjYzMWU0MC0yNmVmLTQzNDUtYjAyOS1hMjBjYWNmM2IwZmUucG5n.png');opacity:.22}
 .actions{margin-top:58px;margin-bottom:58px;padding:44px;border:1px solid rgba(18,59,104,.16);overflow:hidden}
-.actions::before{left:-12px;bottom:-40px;width:245px;height:320px;background-image:url('assets/kangaroo.svg');opacity:.18}
+.actions::before{left:-20px;bottom:-55px;width:190px;height:250px;background-image:url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3Jhd3BpeGVsb2ZmaWNlMTlfd2F0ZXJjb2xvcl9rYW5nYXJvb19pc29sYXRlZF9vbl93aGl0ZV9iYWNrZ3JvdV8xOGQ4N2M3OC1kZDBlLTQwMDctYjg4MC1lNzJkZjA4NjIwOTkucG5n.png');opacity:.16}
 .action-card{position:relative;z-index:1;background:rgba(255,251,244,.84)}
 .closing{position:relative;z-index:2;padding-bottom:110px}
 
 @media(max-width:760px){
- .site-header{background:linear-gradient(180deg,rgba(250,243,233,.98),rgba(250,243,233,.52) 72%,transparent)}
+ .site-header{background:linear-gradient(180deg,rgba(250,243,233,.98),rgba(250,243,233,.5) 72%,transparent)}
  .hero{padding-left:12px;padding-right:12px}
- .hero::before{left:-6px;top:48px;width:330px;height:360px;background-size:auto,90% auto;background-position:center,0 0;clip-path:polygon(0 0,100% 0,70% 68%,0 100%)}
- .hero::after{left:96px;top:120px;width:235px;height:155px;transform:rotate(43deg);opacity:.72}
- .hero .greek-sky{width:285px;right:-64px;top:92px;opacity:.85}
- .hero .olive-left{left:-70px;bottom:-72px;width:230px;height:350px;opacity:.72}
- .hero .olive-right{right:-62px;bottom:-38px;width:245px;height:430px;background-size:68% auto,74% auto;background-position:48% 79%,100% 100%;opacity:.64}
+ .hero .shawl-corner{left:-130px;top:-24px;width:385px;clip-path:polygon(0 0,100% 0,74% 78%,0 100%)}
+ .hero .greek-sky{width:285px;right:-70px;top:74px}
+ .hero .olive-left{left:-62px;bottom:2%;width:230px;height:230px;opacity:.65}
+ .hero .olive-right{right:-58px;bottom:-1%;width:205px;height:410px;opacity:.58}
+ .hero::after{right:-24px;bottom:2%;width:185px;height:255px;opacity:.9}
  .invitation-intro{width:calc(100% - 22px);min-height:660px;margin-top:16px;margin-bottom:48px;padding-left:24px;padding-right:24px}
- .invitation-intro .intro-folk-corner{width:225px;opacity:.35}
- .invitation-intro .intro-folk-left{left:-82px;top:-54px}
- .invitation-intro .intro-folk-right{right:-82px;bottom:-70px}
- .invitation-intro .intro-birch{width:145px;opacity:.34}
+ .invitation-intro .intro-birch{width:145px;opacity:.2}
  .details-showcase{width:calc(100% - 22px);margin-bottom:48px}
- .details-showcase::before{left:-48px;bottom:-50px;width:210px;height:255px;opacity:.27}
- .details-showcase::after{right:-46px;top:-38px;width:185px;height:215px;opacity:.16}
+ .details-showcase::before{left:-72px;bottom:-62px;width:205px;height:225px;opacity:.28}
  .venue-details,.timeline-story,.rsvp-showcase,.actions{width:calc(100% - 22px);padding-left:20px;padding-right:20px}
- .venue-details::before{left:-72px;top:110px;width:235px;height:260px;opacity:.14}
- .timeline-story::after{right:-58px;width:190px;height:280px;opacity:.16}
- .dress-showcase::before{left:-58px;width:185px;height:220px;opacity:.16}
- .rsvp-showcase::after{right:-58px;width:190px;height:230px;opacity:.19}
+ .timeline-story::after{right:-65px;width:175px;height:255px;opacity:.16}
+ .rsvp-showcase::after{right:-72px;width:180px;height:210px;opacity:.18}
  .actions{padding:26px 18px;margin-top:42px}
- .actions::before{left:-28px;bottom:-26px;width:170px;height:220px;opacity:.17}
+ .actions::before{left:-42px;bottom:-38px;width:145px;height:190px;opacity:.14}
 }
