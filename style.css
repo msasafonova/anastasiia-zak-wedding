@@ -198,7 +198,9 @@ button {
 }
 
 
-/* DATE ON INVITATION */
+/* ========================================
+   DATE ON INVITATION
+======================================== */
 
 .card-date {
   margin:
@@ -215,7 +217,9 @@ button {
 }
 
 
-/* NAMES ON INVITATION */
+/* ========================================
+   NAMES ON INVITATION
+======================================== */
 
 .invitation-card h1 {
   margin: 0;
@@ -250,7 +254,9 @@ button {
 }
 
 
-/* ORNAMENT ON INVITATION */
+/* ========================================
+   ORNAMENT ON INVITATION
+======================================== */
 
 .card-divider {
   margin-top: 22px;
@@ -391,7 +397,7 @@ button {
 
 
 /* ========================================
-   "WE'RE GETTING MARRIED"
+   WE'RE GETTING MARRIED
 ======================================== */
 
 .envelope-tagline {
@@ -438,55 +444,24 @@ button {
 
   z-index: 8;
 
-  width: 82px;
-  height: 82px;
+  width: 105px;
+  height: 105px;
 
   transform:
-    translate(
-      -50%,
-      -50%
-    );
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 4px;
+    translate(-50%, -50%);
 
   padding: 0;
 
   border: 0;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      #c64a3d 0%,
-      #a8322d 42%,
-      #8b2623 100%
-    );
-
-  color: #f5dfc8;
-
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif;
+  background: transparent;
 
   cursor: pointer;
 
-  box-shadow:
-    0 6px 12px
-      rgba(80, 20, 20, 0.28),
-
-    inset 0 0 0 3px
-      rgba(120, 25, 25, 0.38),
-
-    inset 0 0 0 6px
-      rgba(230, 120, 90, 0.12);
+  filter:
+    drop-shadow(
+      0 7px 7px
+      rgba(70, 25, 18, 0.28)
+    );
 
   transition:
     opacity
@@ -499,34 +474,26 @@ button {
 }
 
 
+/* IMAGE INSIDE WAX SEAL */
+
+.wax-seal img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+
+/* WAX SEAL HOVER */
+
 .wax-seal:hover {
   transform:
     translate(-50%, -50%)
     scale(1.05);
-}
-
-
-/* TEXT INSIDE WAX SEAL */
-
-.seal-monogram {
-  font-size: 17px;
-
-  font-weight: 600;
-
-  line-height: 0.5;
-}
-
-
-.seal-date {
-  font-size: 19px;
-
-  font-weight: 500;
-
-  letter-spacing: 0.1px;
-
-  line-height: 1.1;
-
-  white-space: nowrap;
 }
 
 
@@ -662,8 +629,10 @@ button {
   }
 
 
+  /* MOBILE CLOSED ENVELOPE NAMES */
+
   .envelope-address {
-    top: 5%;
+    top: -3%;
 
     font-size:
       clamp(
@@ -674,6 +643,8 @@ button {
   }
 
 
+  /* MOBILE TAGLINE */
+
   .envelope-tagline {
     top: 27%;
 
@@ -681,19 +652,11 @@ button {
   }
 
 
+  /* MOBILE WAX SEAL */
+
   .wax-seal {
-    width: 68px;
-    height: 68px;
-  }
-
-
-  .seal-monogram {
-    font-size: 15px;
-  }
-
-
-  .seal-date {
-    font-size: 14px;
+    width: 82px;
+    height: 82px;
   }
 
 }
