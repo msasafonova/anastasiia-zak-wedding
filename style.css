@@ -1,0 +1,604 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap");
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: #f5eee4;
+  color: #172b3a;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6vw;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.navigation a {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 120px 30px 70px;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   ENVELOPE STAGE
+======================================== */
+
+.envelope-stage {
+  position: relative;
+
+  width: min(620px, 78vw);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 150px;
+}
+
+
+/* ========================================
+   ENVELOPE
+======================================== */
+
+.envelope {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1.55 / 1;
+
+  perspective: 1200px;
+}
+
+
+/* ========================================
+   ENVELOPE BACK
+======================================== */
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background: #eadbc8;
+
+  border: 1px solid rgba(55, 40, 25, 0.12);
+
+  box-shadow:
+    0 28px 55px rgba(70, 50, 30, 0.16);
+}
+
+
+/* ========================================
+   INVITATION CARD
+======================================== */
+
+.invitation-card {
+  position: absolute;
+
+  left: 7%;
+  bottom: 4%;
+
+  z-index: 2;
+
+  width: 86%;
+  height: 91%;
+
+  padding: 38px 30px;
+
+  background: #fbf7ef;
+
+  border: 1px solid rgba(55, 40, 25, 0.13);
+
+  text-align: center;
+
+  transform: translateY(0);
+
+  transition:
+    transform 2.8s cubic-bezier(0.22, 0.7, 0.2, 1);
+
+  transition-delay: 0s;
+}
+
+
+/* Date on card */
+
+.card-date {
+  margin: 0 0 22px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+
+/* Names on card */
+
+.invitation-card h1 {
+  margin: 0;
+
+  font-family: "Parisienne", cursive;
+
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 0.88;
+
+  font-weight: 400;
+}
+
+.invitation-card h1 span {
+  display: block;
+
+  margin: 8px 0;
+
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
+
+/* Little ornament */
+
+.card-divider {
+  margin-top: 22px;
+
+  color: #9f2f2a;
+
+  font-size: 17px;
+  letter-spacing: 8px;
+}
+
+
+/* Card message */
+
+.card-text {
+  margin: 20px 0 0;
+
+  font-family: "Parisienne", cursive;
+
+  font-size: 27px;
+  line-height: 1.2;
+}
+
+
+/* ========================================
+   FRONT OF ENVELOPE
+======================================== */
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+
+  z-index: 4;
+
+  background: #efe1cf;
+
+  /*
+    IMPORTANT:
+    These -5% values are the ones you found
+    that correctly raise the side edges.
+  */
+
+  clip-path: polygon(
+    0 -5%,
+    50% 62%,
+    100% -5%,
+    100% 100%,
+    0 100%
+  );
+}
+
+
+/* ========================================
+   TOP FLAP
+======================================== */
+
+.envelope-flap {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 6;
+
+  width: 100%;
+  height: 68%;
+
+  background: #e6d4bf;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 100%
+  );
+
+  transform-origin: top center;
+  transform: rotateX(0deg);
+
+  backface-visibility: hidden;
+
+  transition:
+    transform 1.15s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+
+/* ========================================
+   NAMES ON CLOSED ENVELOPE
+======================================== */
+
+.envelope-address {
+  position: absolute;
+
+  left: 50%;
+  top: 12%;
+
+  z-index: 7;
+
+  width: 90%;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+  white-space: nowrap;
+
+  font-family: "Parisienne", cursive;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1;
+
+  transition:
+    opacity 0.35s ease;
+
+  pointer-events: none;
+}
+
+
+/*
+  Keep Anastasiia & Zak on one line.
+*/
+
+.envelope-address span {
+  display: inline;
+}
+
+.envelope-address b {
+  display: inline;
+
+  margin: 0 8px;
+
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+
+/* ========================================
+   WAX SEAL
+======================================== */
+
+.wax-seal {
+  position: absolute;
+
+  left: 50%;
+  top: 64%;
+
+  z-index: 8;
+
+  width: 82px;
+  height: 82px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+flex-direction: column;
+gap: 4px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #c64a3d 0%,
+      #a8322d 42%,
+      #8b2623 100%
+    );
+
+  color: #f5dfc8;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 12px rgba(80, 20, 20, 0.28),
+    inset 0 0 0 3px rgba(120, 25, 25, 0.38),
+    inset 0 0 0 6px rgba(230, 120, 90, 0.12);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.wax-seal:hover {
+  transform:
+    translate(-50%, -50%)
+    scale(1.05);
+}
+
+.seal-monogram {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 0.5;
+}
+
+.seal-date {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   OPEN STATE
+======================================== */
+
+
+/* Open top flap */
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+
+  z-index: 1;
+}
+
+
+/* Hide names */
+
+.envelope.open .envelope-address {
+  opacity: 0;
+}
+
+
+/* Hide wax seal */
+
+.envelope.open .wax-seal {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.8);
+
+  pointer-events: none;
+}
+
+
+/* Slowly pull invitation upwards */
+
+.envelope.open .invitation-card {
+  transform: translateY(-64%);
+
+  z-index: 3;
+
+  transition-delay: 0.9s;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .site-header {
+    height: 65px;
+
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .navigation {
+    gap: 15px;
+  }
+
+  .navigation a {
+    font-size: 13px;
+  }
+
+
+  .hero {
+    min-height: 100svh;
+
+    padding:
+      90px
+      15px
+      50px;
+  }
+
+
+  .envelope-stage {
+    width: 92vw;
+
+    padding-top: 120px;
+  }
+
+
+  .invitation-card {
+    padding: 28px 18px;
+  }
+
+
+  .card-date {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+
+  .invitation-card h1 {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+
+  .card-divider {
+    margin-top: 15px;
+
+    font-size: 13px;
+  }
+
+
+  .card-text {
+    margin-top: 16px;
+
+    font-size: 23px;
+  }
+
+
+  .envelope-address {
+    top: 27%;
+
+    font-size: clamp(31px, 9vw, 43px);
+  }
+
+
+   .wax-seal {
+    width: 68px;
+    height: 68px;
+    font-size: 14px;
+  }
+
+  .seal-monogram {
+    font-size: 15px;
+  }
+
+  .seal-date {
+    font-size: 10px;
+  }
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 430px) {
+
+  .site-header {
+    padding: 0 15px;
+  }
+
+
+  .logo {
+    font-size: 20px;
+  }
+
+
+  .navigation {
+    gap: 10px;
+  }
+
+
+  .navigation a {
+    font-size: 11px;
+  }
+
+
+  .envelope-stage {
+    width: 94vw;
+  }
+
+
+  .envelope-address {
+    font-size: 30px;
+  }
+
+}
