@@ -1,1 +1,0 @@
-The hero shawl uses the user-provided approved image. The binary WebP is stored separately.
