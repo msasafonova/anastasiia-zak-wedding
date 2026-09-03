@@ -41,6 +41,7 @@ button {
   position: absolute;
   top: 0;
   left: 0;
+
   z-index: 50;
 
   width: 100%;
@@ -53,26 +54,32 @@ button {
   padding: 0 6vw;
 }
 
+
 .logo {
   font-size: 27px;
   font-weight: 500;
   letter-spacing: 2px;
 }
 
+
 .logo span {
   font-family: "Parisienne", cursive;
   font-weight: 400;
 }
 
+
 .navigation {
   display: flex;
   align-items: center;
+
   gap: 35px;
 }
+
 
 .navigation a {
   font-size: 16px;
   font-weight: 500;
+
   letter-spacing: 1px;
 }
 
@@ -91,7 +98,10 @@ button {
   align-items: center;
   justify-content: center;
 
-  padding: 120px 30px 70px;
+  padding:
+    120px
+    30px
+    70px;
 
   overflow: hidden;
 }
@@ -140,10 +150,13 @@ button {
 
   background: #eadbc8;
 
-  border: 1px solid rgba(55, 40, 25, 0.12);
+  border:
+    1px solid
+    rgba(55, 40, 25, 0.12);
 
   box-shadow:
-    0 28px 55px rgba(70, 50, 30, 0.16);
+    0 28px 55px
+    rgba(70, 50, 30, 0.16);
 }
 
 
@@ -162,60 +175,82 @@ button {
   width: 86%;
   height: 91%;
 
-  padding: 38px 30px;
+  padding:
+    38px
+    30px;
 
   background: #fbf7ef;
 
-  border: 1px solid rgba(55, 40, 25, 0.13);
+  border:
+    1px solid
+    rgba(55, 40, 25, 0.13);
 
   text-align: center;
 
   transform: translateY(0);
 
   transition:
-    transform 2.8s cubic-bezier(0.22, 0.7, 0.2, 1);
+    transform
+    2.8s
+    cubic-bezier(0.22, 0.7, 0.2, 1);
 
   transition-delay: 0s;
 }
 
 
-/* Date on card */
+/* DATE ON INVITATION */
 
 .card-date {
-  margin: 0 0 22px;
+  margin:
+    0
+    0
+    22px;
 
   font-size: 13px;
   font-weight: 500;
 
   letter-spacing: 4px;
+
   text-transform: uppercase;
 }
 
 
-/* Names on card */
+/* NAMES ON INVITATION */
 
 .invitation-card h1 {
   margin: 0;
 
-  font-family: "Parisienne", cursive;
+  font-family:
+    "Parisienne",
+    cursive;
 
-  font-size: clamp(48px, 7vw, 82px);
+  font-size:
+    clamp(
+      48px,
+      7vw,
+      82px
+    );
+
   line-height: 0.88;
 
   font-weight: 400;
 }
 
+
 .invitation-card h1 span {
   display: block;
 
-  margin: 8px 0;
+  margin:
+    8px
+    0;
 
   font-size: 0.5em;
+
   font-weight: 400;
 }
 
 
-/* Little ornament */
+/* ORNAMENT ON INVITATION */
 
 .card-divider {
   margin-top: 22px;
@@ -223,19 +258,8 @@ button {
   color: #9f2f2a;
 
   font-size: 17px;
+
   letter-spacing: 8px;
-}
-
-
-/* Card message */
-
-.card-text {
-  margin: 20px 0 0;
-
-  font-family: "Parisienne", cursive;
-
-  font-size: 27px;
-  line-height: 1.2;
 }
 
 
@@ -250,12 +274,6 @@ button {
   z-index: 4;
 
   background: #efe1cf;
-
-  /*
-    IMPORTANT:
-    These -5% values are the ones you found
-    that correctly raise the side edges.
-  */
 
   clip-path: polygon(
     0 -5%,
@@ -290,13 +308,24 @@ button {
     50% 100%
   );
 
-  transform-origin: top center;
-  transform: rotateX(0deg);
+  transform-origin:
+    top center;
 
-  backface-visibility: hidden;
+  transform:
+    rotateX(0deg);
+
+  backface-visibility:
+    hidden;
 
   transition:
-    transform 1.15s cubic-bezier(0.65, 0, 0.35, 1);
+    transform
+    1.15s
+    cubic-bezier(
+      0.65,
+      0,
+      0.35,
+      1
+    );
 }
 
 
@@ -308,43 +337,92 @@ button {
   position: absolute;
 
   left: 50%;
-  top: 12%;
+  top: 6%;
 
   z-index: 7;
 
   width: 90%;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   text-align: center;
+
   white-space: nowrap;
 
-  font-family: "Parisienne", cursive;
-  font-size: clamp(36px, 5vw, 56px);
+  font-family:
+    "Parisienne",
+    cursive;
+
+  font-size:
+    clamp(
+      36px,
+      5vw,
+      56px
+    );
+
   line-height: 1;
 
   transition:
-    opacity 0.35s ease;
+    opacity
+    0.35s
+    ease;
 
   pointer-events: none;
 }
 
 
-/*
-  Keep Anastasiia & Zak on one line.
-*/
-
 .envelope-address span {
   display: inline;
 }
 
+
 .envelope-address b {
   display: inline;
 
-  margin: 0 8px;
+  margin:
+    0
+    8px;
 
   font-size: 0.75em;
+
   font-weight: 400;
+}
+
+
+/* ========================================
+   "WE'RE GETTING MARRIED"
+======================================== */
+
+.envelope-tagline {
+  position: absolute;
+
+  left: 50%;
+  top: 27%;
+
+  z-index: 7;
+
+  width: 80%;
+
+  transform:
+    translateX(-50%);
+
+  text-align: center;
+
+  font-family:
+    "Parisienne",
+    cursive;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  pointer-events: none;
+
+  transition:
+    opacity
+    0.35s
+    ease;
 }
 
 
@@ -363,17 +441,24 @@ button {
   width: 82px;
   height: 82px;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
 
   display: flex;
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
-flex-direction: column;
-gap: 4px;
+
+  gap: 4px;
 
   padding: 0;
 
   border: 0;
+
   border-radius: 50%;
 
   background:
@@ -386,24 +471,33 @@ gap: 4px;
 
   color: #f5dfc8;
 
-  font-family: "Cormorant Garamond", Georgia, serif;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  letter-spacing: 1px;
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
 
   cursor: pointer;
 
   box-shadow:
-    0 6px 12px rgba(80, 20, 20, 0.28),
-    inset 0 0 0 3px rgba(120, 25, 25, 0.38),
-    inset 0 0 0 6px rgba(230, 120, 90, 0.12);
+    0 6px 12px
+      rgba(80, 20, 20, 0.28),
+
+    inset 0 0 0 3px
+      rgba(120, 25, 25, 0.38),
+
+    inset 0 0 0 6px
+      rgba(230, 120, 90, 0.12);
 
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity
+    0.3s
+    ease,
+
+    transform
+    0.3s
+    ease;
 }
+
 
 .wax-seal:hover {
   transform:
@@ -411,17 +505,27 @@ gap: 4px;
     scale(1.05);
 }
 
+
+/* TEXT INSIDE WAX SEAL */
+
 .seal-monogram {
   font-size: 17px;
+
   font-weight: 600;
+
   line-height: 0.5;
 }
 
+
 .seal-date {
   font-size: 19px;
+
   font-weight: 500;
+
   letter-spacing: 0.1px;
+
   line-height: 1.1;
+
   white-space: nowrap;
 }
 
@@ -431,23 +535,31 @@ gap: 4px;
 ======================================== */
 
 
-/* Open top flap */
+/* OPEN FLAP */
 
 .envelope.open .envelope-flap {
-  transform: rotateX(180deg);
+  transform:
+    rotateX(180deg);
 
   z-index: 1;
 }
 
 
-/* Hide names */
+/* HIDE NAMES */
 
 .envelope.open .envelope-address {
   opacity: 0;
 }
 
 
-/* Hide wax seal */
+/* HIDE TAGLINE */
+
+.envelope.open .envelope-tagline {
+  opacity: 0;
+}
+
+
+/* HIDE WAX SEAL */
 
 .envelope.open .wax-seal {
   opacity: 0;
@@ -460,10 +572,11 @@ gap: 4px;
 }
 
 
-/* Slowly pull invitation upwards */
+/* MOVE INVITATION UP */
 
 .envelope.open .invitation-card {
-  transform: translateY(-64%);
+  transform:
+    translateY(-64%);
 
   z-index: 3;
 
@@ -480,16 +593,21 @@ gap: 4px;
   .site-header {
     height: 65px;
 
-    padding: 0 20px;
+    padding:
+      0
+      20px;
   }
+
 
   .logo {
     font-size: 22px;
   }
 
+
   .navigation {
     gap: 15px;
   }
+
 
   .navigation a {
     font-size: 13px;
@@ -514,18 +632,26 @@ gap: 4px;
 
 
   .invitation-card {
-    padding: 28px 18px;
+    padding:
+      28px
+      18px;
   }
 
 
   .card-date {
     font-size: 10px;
+
     letter-spacing: 3px;
   }
 
 
   .invitation-card h1 {
-    font-size: clamp(42px, 12vw, 62px);
+    font-size:
+      clamp(
+        42px,
+        12vw,
+        62px
+      );
   }
 
 
@@ -536,33 +662,40 @@ gap: 4px;
   }
 
 
-  .card-text {
-    margin-top: 16px;
+  .envelope-address {
+    top: 6%;
+
+    font-size:
+      clamp(
+        31px,
+        9vw,
+        43px
+      );
+  }
+
+
+  .envelope-tagline {
+    top: 27%;
 
     font-size: 23px;
   }
 
 
-  .envelope-address {
-    top: 27%;
-
-    font-size: clamp(31px, 9vw, 43px);
-  }
-
-
-   .wax-seal {
+  .wax-seal {
     width: 68px;
     height: 68px;
-    font-size: 14px;
   }
+
 
   .seal-monogram {
     font-size: 15px;
   }
 
+
   .seal-date {
-    font-size: 10px;
+    font-size: 14px;
   }
+
 }
 
 
@@ -573,7 +706,9 @@ gap: 4px;
 @media (max-width: 430px) {
 
   .site-header {
-    padding: 0 15px;
+    padding:
+      0
+      15px;
   }
 
 
@@ -599,6 +734,11 @@ gap: 4px;
 
   .envelope-address {
     font-size: 30px;
+  }
+
+
+  .envelope-tagline {
+    font-size: 21px;
   }
 
 }
