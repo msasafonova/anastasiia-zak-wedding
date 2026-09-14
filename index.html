@@ -11,11 +11,15 @@
 
   <title>Anastasiia & Zak — 13 March 2027</title>
 
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 
 
 <body>
+
+  <!-- ========================================
+       HEADER
+  ======================================== -->
 
   <header class="site-header">
 
@@ -23,90 +27,560 @@
       A <span>&</span> Z
     </a>
 
-    <nav class="navigation">
-      <a href="#our-day">Our Day</a>
-      <a href="#details">Details</a>
-      <a href="#rsvp">RSVP</a>
-      <a href="#photos">Photos</a>
-    </nav>
+<nav class="navigation">
+<a href="#rsvp">RSVP</a>
+  <a href="#gifts">Gifts</a>
+  <a href="#our-day">Reception timeline</a>
+  <a href="#menu">Menu</a>
+  <a href="#photos">Photos</a>
+</nav>
 
   </header>
 
 
+  <!-- ========================================
+       PARALLAX TREES
+  ======================================== -->
+
+ <div
+  class="tree-layer"
+  aria-hidden="true"
+>
+
+  <img
+    class="parallax-tree olive-tree"
+    src="assets/olive-tree.png"
+    alt=""
+  >
+
+  <img
+    class="parallax-tree birch-tree"
+    src="assets/birch-tree.png"
+    alt=""
+  >
+
+
+</div>
+
+
   <main>
 
-    <section class="hero" id="home">
 
-      <div class="envelope-stage">
+    <!-- ========================================
+         HERO
+    ======================================== -->
 
-        <div class="envelope" id="envelope">
+    <section
+      class="hero"
+      id="home"
+    >
+
+      <div class="envelope-scene">
 
 
-          <!-- BACK OF ENVELOPE -->
+        <!-- ========================================
+             BACK OF ENVELOPE
+        ======================================== -->
 
-          <div class="envelope-back"></div>
+        <img
+          class="envelope-back-image"
+          src="assets/envelope-back.png"
+          alt=""
+          aria-hidden="true"
+        >
 
 
-          <!-- INVITATION CARD INSIDE -->
+        <!-- ========================================
+             INVITATION IMAGE
+        ======================================== -->
 
-          <div class="invitation-card">
+        <img
+          class="invitation-image"
+          src="assets/invitation.png"
+          alt="Anastasiia and Zak wedding invitation"
+        >
 
-            <p class="card-date">
-              13 March 2027
-            </p>
 
-            <h1>
-              Anastasiia
-              <span>&</span>
-              Zak
-            </h1>
+        <!-- ========================================
+             FRONT OF ENVELOPE
+        ======================================== -->
 
-            <div class="card-divider">
-              ❧ ♡ ❧
+        <img
+          class="envelope-front-image"
+          src="assets/envelope-front.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+
+        <!-- ========================================
+             TEXT ON FRONT OF ENVELOPE
+        ======================================== -->
+
+        <div class="front-copy">
+
+          <p class="front-tagline">
+            We’re getting married!
+          </p>
+
+        </div>
+
+
+        <!-- ========================================
+             WAX SEAL
+        ======================================== -->
+
+        <div class="front-seal">
+
+          <img
+            src="assets/wax-seal.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+<!-- ========================================
+     QUICK NAVIGATION
+======================================== -->
+
+<section class="quick-nav">
+
+  <div class="quick-nav-inner">
+
+
+    <!-- CEREMONY -->
+
+    <div class="quick-nav-item">
+
+      <div class="quick-nav-icon">
+        <img
+          src="assets/ceremony-icon.png"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+
+      <h3>
+        The Ceremony
+      </h3>
+
+      <p class="quick-nav-main">
+        3:00 PM
+      </p>
+
+      <p class="quick-nav-description">
+        St Andrew’s Greek 
+        Orthodox Church <br>
+~*~<br>
+201 Mahoneys Rd, Forest Hill
+      </p>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=St+Andrew%27s+Greek+Orthodox+Church+201+Mahoneys+Road+Forest+Hill+VIC+3131"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View on the map →
+      </a>
+
+    </div>
+
+
+    <!-- RECEPTION -->
+
+    <div class="quick-nav-item">
+
+      <div class="quick-nav-icon">
+        <img
+          src="assets/reception-icon.png"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+
+      <h3>
+        The Reception
+      </h3>
+
+      <p class="quick-nav-main">
+        4:30 PM
+      </p>
+
+      <p class="quick-nav-description">
+        Chateau Wyuna<br>
+        On-site parking available<br>
+~*~<br>
+170 Swansea Road, Mount Evelyn
+      </p>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Chateau+Wyuna+170+Swansea+Road+Mount+Evelyn+VIC+3796"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View on the map →
+      </a>
+
+     
+
+    </div>
+
+
+
+    <!-- DRESS CODE -->
+
+    <div class="quick-nav-item">
+
+      <div class="quick-nav-icon">
+        <img
+          src="assets/dress-code-icon.png"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+
+      <h3>
+        Dress Code
+      </h3>
+
+      <p class="quick-nav-main">
+        Casual Formal
+      </p>
+
+      <p class="quick-nav-description">
+        Come looking fabulous, 
+with comfort in mind for wandering through the gardens and dancing the night away.
+      </p>
+
+    
+
+    </div>
+
+    <!-- MENU -->
+
+    <div class="quick-nav-item">
+
+      <div class="quick-nav-icon">
+        <img
+          src="assets/menu-icon.png"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+
+      <h3>
+        MENU
+      </h3>
+
+      <p class="quick-nav-main">
+        Food and Drinks
+      </p>
+
+      <p class="quick-nav-description">
+        Good food, flowing drinks and plenty to enjoy
+      </p>
+
+      <a href="#menu">
+        Detailed menu →
+      </a>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+    <!-- ========================================
+         ACTION PANEL
+    ======================================== -->
+
+    <section class="action-panel">
+
+      <div class="action-panel-inner">
+
+
+        <!-- ========================================
+             RSVP CARD
+        ======================================== -->
+
+        <article
+          class="action-card"
+          id="rsvp"
+        >
+
+          <p class="action-eyebrow">
+            RSVP
+          </p>
+
+          <h2>
+            Will you be joining us?
+          </h2>
+
+          <p class="action-description">
+            Let us know if you’ll be celebrating with us
+            on 13 March 2027.
+          </p>
+
+      <button
+  class="action-button"
+  id="openRsvp"
+  type="button"
+>
+  RSVP →
+</button>
+
+        </article>
+
+
+        <!-- ========================================
+             PHOTO CARD
+        ======================================== -->
+
+        <article
+          class="action-card"
+          id="photos"
+        >
+
+          <p class="action-eyebrow">
+            Photos
+          </p>
+
+          <h2>
+            Share your memories with us
+          </h2>
+
+          <p class="action-description">
+            Took a great photo or video?
+            Add it to our wedding collection.
+          </p>
+
+          <a
+  class="action-button"
+  href="https://drive.google.com/drive/folders/1ZQSuKq5FxmrX7gMjgnvJJKDCnymUIKeL?usp=drive_link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Upload photos →
+</a>
+
+        </article>
+
+<!-- ========================================
+     GIFTS CARD
+======================================== -->
+
+<article
+  class="action-card"
+  id="gifts"
+>
+
+  <p class="action-eyebrow">
+    Gifts
+  </p>
+
+  <h2>
+    We have enough stuff. Really.
+  </h2>
+
+  <p class="action-description">
+    If you’d like to give us a wedding gift,
+    we’d be very grateful for a contribution
+    towards our future adventures together.
+  </p>
+
+  <p class="action-description">
+    There’ll be a wishing well at the reception
+    for cards and envelopes — or, if cash isn’t your thing,
+    you can use our PayID below.
+  </p>
+
+  <div class="action-payid">
+    <span>
+      PayID
+    </span>
+
+    <strong>
+      [details]
+    </strong>
+  </div>
+
+</article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         RECEPTION TIMELINE
+    ======================================== -->
+
+    <section
+      class="our-day"
+      id="our-day"
+    >
+
+      <div class="our-day-inner">
+
+        <p class="section-kicker">
+          Chateau Wyuna · 4:30 PM — 11:00 PM
+        </p>
+
+        <h2 class="section-title">
+          Reception Timeline
+        </h2>
+
+
+        <div class="timeline">
+
+
+          <!-- DRINKS & CANAPÉS -->
+
+          <div class="timeline-item">
+
+            <div class="timeline-time">
+              4:30 PM
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Drinks & Canapés
+              </h3>
+
+              <p>
+                Join us upstairs on the balcony for drinks,
+                canapés and a chance to mingle.
+              </p>
+
             </div>
 
           </div>
 
 
-          <!-- FRONT POCKET -->
+          <!-- ENTRÉE BUFFET -->
 
-          <div class="envelope-front"></div>
+          <div class="timeline-item">
 
+            <div class="timeline-time">
+              6:00 PM
+            </div>
 
-          <!-- TOP FLAP -->
+            <div class="timeline-content">
 
-          <div class="envelope-flap"></div>
+              <h3>
+                Entrée Buffet
+              </h3>
 
+              <p>
+                Help yourself to the buffet,
+                then take your plate and explore the gardens.
+              </p>
 
-          <!-- NAMES ON CLOSED ENVELOPE -->
+            </div>
 
-          <div class="envelope-address">
-            <span>Anastasiia</span>
-            <b>&</b>
-            <span>Zak</span>
           </div>
 
 
-          <!-- TEXT ON CLOSED ENVELOPE -->
+          <!-- TAKE YOUR SEATS -->
 
-          <div class="envelope-tagline">
-            We're getting married!
+          <div class="timeline-item">
+
+            <div class="timeline-time">
+              7:00 PM
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Please Take Your Seats for Dinner
+              </h3>
+
+              <p>
+                We’ll make our way inside for the evening.
+              </p>
+
+            </div>
+
           </div>
 
 
-          <!-- WAX SEAL -->
+                  <!-- FIRST DANCE -->
 
-<button
-  class="wax-seal"
-  id="openInvitation"
-  type="button"
-  aria-label="Open invitation"
->
-  <img
-    src="assets/wax-seal.png"
-    alt=""
-  >
-</button>
+          <div class="timeline-item">
+
+            <div class="timeline-time">
+              8:00 PM
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                First Dance
+              </h3>
+
+              <p>
+                Then the dance floor is officially open.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- DESSERT BAR -->
+
+          <div class="timeline-item">
+
+            <div class="timeline-time">
+              9:00 PM
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Dessert Bar
+              </h3>
+
+              <p>
+                Something sweet, followed by more dancing.
+              </p>
+
+            </div>
+
+          </div>
+
+
+                   <!-- FINAL SONGS -->
+
+          <div class="timeline-item">
+
+            <div class="timeline-time">
+              10:40 PM
+            </div>
+
+            <div class="timeline-content">
+
+              <h3>
+                Final Songs & Farewell
+              </h3>
+
+              <p>
+                One last dance together before we say goodnight.
+              </p>
+
+            </div>
+
+          </div>
 
 
         </div>
@@ -115,10 +589,289 @@
 
     </section>
 
+
+<!-- ========================================
+     MENU
+======================================== -->
+
+<section
+  class="menu-section"
+  id="menu"
+>
+
+  <div class="menu-inner">
+
+    <p class="section-kicker">
+      Food & Drinks
+    </p>
+
+    <h2 class="section-title">
+      Menu
+    </h2>
+
+    <div class="menu-placeholder">
+
+      <img
+        class="menu-placeholder-image"
+        src="assets/menu-icon.png"
+        alt=""
+        aria-hidden="true"
+      >
+
+      <p class="menu-placeholder-title">
+        Menu coming soon
+      </p>
+
+      <p class="menu-placeholder-text">
+        We’re still finalising the delicious details.
+      </p>
+
+      <p class="menu-placeholder-note">
+        Check back closer to the day for the full food and drinks menu.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- ========================================
+         FUTURE DETAIL SECTIONS
+    ======================================== -->
+
+    <!--
+
+      Next we will add:
+
+      CEREMONY DETAILS
+      id="ceremony"
+
+      RECEPTION DETAILS
+      id="reception"
+
+      DRESS CODE
+      id="dress-code"
+
+      RSVP FORM
+      id="rsvp-form"
+
+      PHOTO UPLOAD
+      id="photo-upload"
+
+    -->
+
+<!-- ========================================
+     BOTTOM DECORATION
+======================================== -->
+
+<section
+  class="bottom-decoration"
+  aria-hidden="true"
+>
+
+  <img
+    class="bottom-decoration-image"
+    src="assets/bottom-garland.png"
+    alt=""
+  >
+
+</section>
+
+
   </main>
 
 
-  <script src="script.js"></script>
+<!-- ========================================
+     RSVP MODAL
+======================================== -->
+
+<div
+  class="rsvp-modal"
+  id="rsvpModal"
+  aria-hidden="true"
+>
+
+  <div class="rsvp-modal-card">
+
+    <!-- CLOSE BUTTON -->
+
+    <button
+      class="rsvp-close"
+      id="closeRsvp"
+      type="button"
+      aria-label="Close RSVP form"
+    >
+      ×
+    </button>
+
+
+    <!-- FORM HEADER -->
+
+    <p class="rsvp-kicker">
+      13 March 2027
+    </p>
+
+    <h2 class="rsvp-title">
+      RSVP
+    </h2>
+
+    <p class="rsvp-intro">
+      We’d love to know if you’ll be celebrating with us.
+    </p>
+
+
+    <!-- RSVP FORM -->
+
+    <form id="rsvpForm">
+
+
+      <!-- NAME -->
+
+      <div class="rsvp-field">
+
+        <label for="rsvpName">
+          Your name
+        </label>
+
+        <input
+          id="rsvpName"
+          name="name"
+          type="text"
+          autocomplete="name"
+          required
+        >
+
+      </div>
+
+
+      <!-- ATTENDING -->
+
+      <div class="rsvp-field">
+
+        <label for="rsvpAttending">
+          Will you be joining us?
+        </label>
+
+        <select
+          id="rsvpAttending"
+          name="attending"
+          required
+        >
+
+          <option value="" selected disabled>
+            Please choose
+          </option>
+
+          <option value="Yes">
+            Yes, happily!
+          </option>
+
+          <option value="No">
+            Sadly, no
+          </option>
+
+          <option value="Maybe">
+            Not sure yet
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- ADDITIONAL GUESTS -->
+
+      <div class="rsvp-field">
+
+        <label for="rsvpGuests">
+          Total number attending (including yourself)
+        </label>
+
+        <input
+          id="rsvpGuests"
+          name="guests"
+          type="text"
+          placeholder="Total number of people attending in your party"
+        >
+
+      </div>
+
+
+      <!-- DIETARY -->
+
+      <div class="rsvp-field">
+
+        <label for="rsvpDietary">
+          Dietary requirements
+        </label>
+
+        <textarea
+          id="rsvpDietary"
+          name="dietary"
+          rows="3"
+          placeholder="Allergies, dietary requirements, etc."
+        ></textarea>
+
+      </div>
+
+
+      <!-- MESSAGE -->
+
+      <div class="rsvp-field">
+
+        <label for="rsvpMessage">
+          Message
+        </label>
+
+        <textarea
+          id="rsvpMessage"
+          name="message"
+          rows="3"
+          placeholder="Anything you'd like us to know"
+        ></textarea>
+
+      </div>
+
+
+      <!-- SUBMIT -->
+
+      <button
+        class="rsvp-submit"
+        type="submit"
+      >
+        Send RSVP
+      </button>
+
+
+      <!-- STATUS MESSAGE -->
+
+      <p
+        class="rsvp-status"
+        id="rsvpStatus"
+        aria-live="polite"
+      ></p>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- ========================================
+     BACK TO TOP
+======================================== -->
+
+<a
+  class="back-to-top"
+  href="#home"
+  aria-label="Back to top"
+>
+  ↑
+</a>
+
+
+  <script src="script.js?v=3"></script>
 
 </body>
 

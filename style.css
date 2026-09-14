@@ -39,48 +39,170 @@ button {
 
 .site-header {
   position: absolute;
-  top: 0;
-  left: 0;
 
-  z-index: 50;
+  top: 14px;
+  left: 50%;
 
-  width: 100%;
-  height: 80px;
+  transform: translateX(-50%);
+
+  z-index: 100;
+
+  width: min(1180px, 88vw);
+  height: 58px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 6vw;
+  padding:
+    0
+    28px;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.58),
+      rgba(251, 247, 239, 0.58)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(90, 72, 53, 0.10);
+
+  box-shadow:
+    0 6px 18px
+    rgba(70, 50, 30, 0.08);
+
+  backdrop-filter:
+    blur(4px);
 }
 
+
+/* ========================================
+   HEADER LOGO
+======================================== */
 
 .logo {
+  color: #234c73;
+
   font-size: 27px;
   font-weight: 500;
-  letter-spacing: 2px;
-}
 
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
 
 .logo span {
-  font-family: "Parisienne", cursive;
-  font-weight: 400;
+  font-family:
+    "Parisienne",
+    cursive;
+
+  font-size: 1.08em;
 }
 
+
+/* ========================================
+   HEADER NAVIGATION
+======================================== */
 
 .navigation {
   display: flex;
   align-items: center;
 
-  gap: 35px;
+  gap: 34px;
+}
+
+.navigation a {
+  position: relative;
+
+  color: #234c73;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  letter-spacing: 1.1px;
+
+  white-space: nowrap;
+}
+
+.navigation a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    #9b7259;
+
+  transition:
+    width 0.25s ease;
+}
+
+.navigation a:hover::after {
+  width: 100%;
 }
 
 
-.navigation a {
-  font-size: 16px;
-  font-weight: 500;
+/* ========================================
+   PARALLAX TREES
+======================================== */
 
-  letter-spacing: 1px;
+.tree-layer {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+.parallax-tree {
+  position: absolute;
+
+  top: -8vh;
+
+  height: clamp(1200px, 165vh, 1750px);
+  width: auto;
+
+  max-width: none;
+
+  will-change: transform;
+
+  pointer-events: none;
+}
+
+
+/* LEFT — OLIVE TREE */
+
+.olive-tree {
+  left: clamp(-85px, -4vw, -35px);
+}
+
+
+/* RIGHT — BIRCH TREE */
+
+.birch-tree {
+  right: clamp(-85px, -4vw, -35px);
 }
 
 
@@ -90,6 +212,8 @@ button {
 
 .hero {
   position: relative;
+
+  z-index: 2;
 
   width: 100%;
   min-height: 100vh;
@@ -108,107 +232,484 @@ button {
 
 
 /* ========================================
-   ENVELOPE STAGE
+   ENVELOPE SCENE
 ======================================== */
 
-.envelope-stage {
+.envelope-scene {
   position: relative;
 
-  width: min(620px, 78vw);
+  width: min(760px, 86vw);
+
+  aspect-ratio: 0.88 / 1;
+}
+
+
+/* ========================================
+   ENVELOPE BACK IMAGE
+======================================== */
+
+.envelope-back-image {
+  position: absolute;
+
+  left: -8%;
+  top: 7%;
+
+  width: 116%;
+  height: auto;
+
+  display: block;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   INVITATION IMAGE
+======================================== */
+
+.invitation-image {
+  position: absolute;
+
+  left: 50%;
+  top: -4%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 2;
+
+  width: 80%;
+  height: auto;
+
+  display: block;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(
+      0 10px 16px
+      rgba(70, 45, 28, 0.14)
+    );
+}
+
+
+/* ========================================
+   ENVELOPE FRONT IMAGE
+======================================== */
+
+.envelope-front-image {
+  position: absolute;
+
+  left: 0;
+  bottom: 5%;
+
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+
+/* ========================================
+   FRONT COPY
+======================================== */
+
+.front-copy {
+  position: absolute;
+
+  left: 50%;
+  bottom: 28%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 5;
+
+  width: 60%;
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.front-tagline {
+  margin: 0;
+
+  font-family:
+    "Parisienne",
+    cursive;
+
+  font-size:
+    clamp(
+      27px,
+      4vw,
+      45px
+    );
+
+  line-height: 1;
+
+  color: #b07863;
+}
+
+
+/* ========================================
+   FRONT SEAL
+======================================== */
+
+.front-seal {
+  position: absolute;
+
+  left: 50%;
+  bottom: 15%;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 6;
+
+  width: 110px;
+  height: 110px;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(
+      0 9px 12px
+      rgba(80, 35, 25, 0.28)
+    );
+}
+
+.front-seal img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* ========================================
+   QUICK NAVIGATION
+======================================== */
+
+.quick-nav {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    40px
+    20px
+    70px;
+}
+
+.quick-nav-inner {
+  width: min(1500px, 94vw);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.35),
+      rgba(251, 247, 239, 0.35)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(90, 72, 53, 0.12);
+
+  box-shadow:
+    0 14px 35px
+    rgba(70, 50, 30, 0.10);
+}
+
+
+/* ========================================
+   QUICK NAVIGATION ITEM
+======================================== */
+
+.quick-nav-item {
+  position: relative;
+
+  min-height: 430px;
+
+  padding:
+    40px
+    42px
+    35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.quick-nav-item:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 28px;
+  right: 0;
+  bottom: 28px;
+
+  width: 1px;
+
+  background:
+    rgba(49, 76, 104, 0.18);
+}
+
+
+/* ========================================
+   QUICK NAV ICON
+======================================== */
+
+.quick-nav-icon {
+  height: 92px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding-top: 150px;
+  margin-bottom: 18px;
+}
+
+.quick-nav-icon img {
+  display: block;
+
+  max-width: 105px;
+  max-height: 88px;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
 }
 
 
 /* ========================================
-   ENVELOPE
+   QUICK NAV TITLE
 ======================================== */
 
-.envelope {
-  position: relative;
-
-  width: 100%;
-  aspect-ratio: 1.55 / 1;
-
-  perspective: 1200px;
-}
-
-
-/* ========================================
-   ENVELOPE BACK
-======================================== */
-
-.envelope-back {
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  background: #eadbc8;
-
-  border:
-    1px solid
-    rgba(55, 40, 25, 0.12);
-
-  box-shadow:
-    0 28px 55px
-    rgba(70, 50, 30, 0.16);
-}
-
-
-/* ========================================
-   INVITATION CARD
-======================================== */
-
-.invitation-card {
-  position: absolute;
-
-  left: 7%;
-  bottom: 4%;
-
-  z-index: 2;
-
-  width: 86%;
-  height: 91%;
-
-  padding:
-    38px
-    30px;
-
-  background: #fbf7ef;
-
-  border:
-    1px solid
-    rgba(55, 40, 25, 0.13);
-
-  text-align: center;
-
-  transform: translateY(0);
-
-  transition:
-    transform
-    2.8s
-    cubic-bezier(0.22, 0.7, 0.2, 1);
-
-  transition-delay: 0s;
-}
-
-
-/* ========================================
-   DATE ON INVITATION
-======================================== */
-
-.card-date {
+.quick-nav-item h3 {
   margin:
     0
     0
-    22px;
+    25px;
 
-  font-size: 13px;
+  color: #234c73;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   QUICK NAV MAIN TEXT
+======================================== */
+
+.quick-nav-main {
+  margin:
+    0
+    0
+    10px;
+
+  color: #234c73;
+
+  font-size: 28px;
+
+  line-height: 1.15;
+}
+
+
+/* ========================================
+   QUICK NAV DESCRIPTION
+======================================== */
+
+.quick-nav-description {
+  margin: 0;
+
+  color: #6f645a;
+
+  font-size: 21px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   QUICK NAV LINKS
+======================================== */
+
+.quick-nav-item a {
+  margin-top: auto;
+
+  padding-bottom: 5px;
+
+  color: #234c73;
+
+  font-size: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(35, 76, 115, 0.35);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.quick-nav-item a:hover {
+  border-color:
+    #234c73;
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* ========================================
+   ACTION PANEL
+======================================== */
+
+.action-panel {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    10px
+    20px
+    80px;
+}
+
+.action-panel-inner {
+  width: min(1180px, 88vw);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 34px;
+}
+
+#rsvp {
+  grid-column: 1 / -1;
+
+  width: min(900px, 100%);
+
+  margin: 0 auto;
+}
+
+/* ========================================
+   ACTION CARD
+======================================== */
+
+.action-card {
+  position: relative;
+
+  min-height: 320px;
+
+  padding:
+    54px
+    58px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.30),
+      rgba(251, 247, 239, 0.30)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(110, 85, 60, 0.10);
+
+  box-shadow:
+    0 18px 40px
+    rgba(70, 50, 30, 0.12);
+}
+
+.action-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -6px;
+
+  z-index: -1;
+
+  background:
+    #f7efe4;
+
+  opacity: 0.48;
+
+  filter:
+    blur(7px);
+}
+
+
+/* ========================================
+   ACTION EYEBROW
+======================================== */
+
+.action-eyebrow {
+  margin:
+    0
+    0
+    14px;
+
+  color: #9b7259;
+
+  font-size: 14px;
   font-weight: 500;
 
   letter-spacing: 4px;
@@ -218,143 +719,16 @@ button {
 
 
 /* ========================================
-   NAMES ON INVITATION
+   ACTION TITLE
 ======================================== */
 
-.invitation-card h1 {
-  margin: 0;
-
-  font-family:
-    "Parisienne",
-    cursive;
-
-  font-size:
-    clamp(
-      48px,
-      7vw,
-      82px
-    );
-
-  line-height: 0.88;
-
-  font-weight: 400;
-}
-
-
-.invitation-card h1 span {
-  display: block;
-
+.action-card h2 {
   margin:
-    8px
-    0;
+    0
+    0
+    18px;
 
-  font-size: 0.5em;
-
-  font-weight: 400;
-}
-
-
-/* ========================================
-   ORNAMENT ON INVITATION
-======================================== */
-
-.card-divider {
-  margin-top: 22px;
-
-  color: #9f2f2a;
-
-  font-size: 17px;
-
-  letter-spacing: 8px;
-}
-
-
-/* ========================================
-   FRONT OF ENVELOPE
-======================================== */
-
-.envelope-front {
-  position: absolute;
-  inset: 0;
-
-  z-index: 4;
-
-  background: #efe1cf;
-
-  clip-path: polygon(
-    0 -5%,
-    50% 62%,
-    100% -5%,
-    100% 100%,
-    0 100%
-  );
-}
-
-
-/* ========================================
-   TOP FLAP
-======================================== */
-
-.envelope-flap {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  z-index: 6;
-
-  width: 100%;
-  height: 68%;
-
-  background: #e6d4bf;
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    50% 100%
-  );
-
-  transform-origin:
-    top center;
-
-  transform:
-    rotateX(0deg);
-
-  backface-visibility:
-    hidden;
-
-  transition:
-    transform
-    1.15s
-    cubic-bezier(
-      0.65,
-      0,
-      0.35,
-      1
-    );
-}
-
-
-/* ========================================
-   NAMES ON CLOSED ENVELOPE
-======================================== */
-
-.envelope-address {
-  position: absolute;
-
-  left: 50%;
-  top: 6%;
-
-  z-index: 7;
-
-  width: 90%;
-
-  transform:
-    translateX(-50%);
-
-  text-align: center;
-
-  white-space: nowrap;
+  color: #314c68;
 
   font-family:
     "Parisienne",
@@ -362,224 +736,1342 @@ button {
 
   font-size:
     clamp(
-      36px,
-      5vw,
-      56px
+      40px,
+      4vw,
+      58px
     );
 
-  line-height: 1;
+  font-weight: 400;
 
-  transition:
-    opacity
-    0.35s
-    ease;
-
-  pointer-events: none;
+  line-height: 1.05;
 }
 
 
-.envelope-address span {
-  display: inline;
-}
+/* ========================================
+   ACTION DESCRIPTION
+======================================== */
 
-
-.envelope-address b {
-  display: inline;
+.action-description {
+  max-width: 430px;
 
   margin:
     0
-    8px;
+    auto
+    32px;
 
-  font-size: 0.75em;
+  color: #6c5949;
 
-  font-weight: 400;
+  font-size: 20px;
+
+  line-height: 1.45;
 }
 
 
 /* ========================================
-   WE'RE GETTING MARRIED
+   ACTION BUTTON
 ======================================== */
 
-.envelope-tagline {
-  position: absolute;
+.action-button {
+  display: inline-flex;
 
-  left: 50%;
-  top: 27%;
+  align-items: center;
+  justify-content: center;
 
-  z-index: 7;
+  min-width: 180px;
 
-  width: 80%;
+  padding:
+    13px
+    28px;
 
+  color: #234c73;
+
+  font-size: 19px;
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+
+  border:
+    1px solid
+    rgba(35, 76, 115, 0.35);
+
+  background:
+    rgba(255, 252, 246, 0.35);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.action-button:hover {
   transform:
-    translateX(-50%);
+    translateY(-2px);
+
+  background:
+    rgba(255, 252, 246, 0.75);
+
+  border-color:
+    rgba(35, 76, 115, 0.65);
+}
+
+
+/* ========================================
+   OUR DAY
+======================================== */
+
+.our-day {
+  position: relative;
+
+  z-index: 2;
+
+  padding:
+    120px
+    20px
+    140px;
+
+  background: transparent;
+}
+
+.our-day-inner {
+  position: relative;
+
+  width: min(900px, 86vw);
+
+  margin: 0 auto;
+
+  padding:
+    70px
+    80px;
 
   text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.30),
+      rgba(251, 247, 239, 0.30)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(110, 85, 60, 0.10);
+
+  box-shadow:
+    0 18px 40px
+    rgba(70, 50, 30, 0.12);
+
+  border-radius: 2px;
+}
+
+.our-day-inner::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -8px;
+
+  z-index: -1;
+
+  background:
+    #f7efe4;
+
+  opacity: 0.55;
+
+  filter:
+    blur(8px);
+}
+
+
+/* ========================================
+   SECTION KICKER
+======================================== */
+
+.section-kicker {
+  margin:
+    0
+    0
+    10px;
+
+  color: #9b7259;
+
+  font-size: 14px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   SECTION TITLE
+======================================== */
+
+.section-title {
+  margin:
+    0
+    0
+    70px;
+
+  color: #314c68;
 
   font-family:
     "Parisienne",
     cursive;
 
-  font-size: 28px;
+  font-size:
+    clamp(
+      52px,
+      6vw,
+      84px
+    );
+
+  font-weight: 400;
 
   line-height: 1;
-
-  pointer-events: none;
-
-  transition:
-    opacity
-    0.35s
-    ease;
 }
 
 
 /* ========================================
-   WAX SEAL
+   TIMELINE
 ======================================== */
 
-.wax-seal {
+.timeline {
+  position: relative;
+
+  width: min(760px, 100%);
+
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+
   position: absolute;
 
-  left: 50%;
-  top: 64%;
+  left: 130px;
+  top: 10px;
+  bottom: 10px;
 
-  z-index: 8;
+  width: 0.5px;
 
-  width: 105px;
-  height: 105px;
+  background:
+    rgba(111, 88, 65, 0.22);
+}
 
-  transform:
-    translate(-50%, -50%);
+.timeline-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    110px
+    1fr;
+
+  gap: 40px;
+
+  padding:
+    0
+    0
+    52px;
+
+  text-align: left;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-time {
+  padding-top: 3px;
+
+  color: #9b7259;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  text-align: right;
+}
+
+.timeline-content {
+  position: relative;
+}
+
+.timeline-content::before {
+  content: "";
+
+  position: absolute;
+
+  left: -25px;
+  top: 7px;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  background:
+    #b07863;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(176, 120, 99, 0.10);
+}
+
+.timeline-content h3 {
+  margin:
+    0
+    0
+    6px;
+
+  color: #314c68;
+
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.timeline-content p {
+  margin: 0;
+
+  color: #6c5949;
+
+  font-size: 19px;
+
+  line-height: 1.4;
+}
+
+/* ========================================
+   GIFTS
+======================================== */
+
+.gifts {
+  position: relative;
+
+  z-index: 2;
+
+  padding:
+    50px
+    20px
+    70px;
+}
+
+
+.gifts-inner {
+  position: relative;
+
+  width: min(980px, 88vw);
+
+  margin: 0 auto;
+
+  padding:
+    55px
+    70px
+    50px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.28),
+      rgba(251, 247, 239, 0.28)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(110, 85, 60, 0.10);
+
+  box-shadow:
+    0 16px 36px
+    rgba(70, 50, 30, 0.10);
+}
+
+
+.gifts .section-title {
+  margin-bottom: 28px;
+}
+
+
+.gifts-lead {
+  margin:
+    0
+    0
+    24px;
+
+  color: #314c68;
+
+  font-size: 25px;
+
+  font-style: italic;
+}
+
+
+.gifts-inner > p:not(.section-kicker):not(.gifts-lead):not(.gifts-final) {
+  margin:
+    0
+    auto
+    20px;
+
+  max-width: 600px;
+
+  color: #6c5949;
+
+  font-size: 19px;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   PAYID
+======================================== */
+
+.gifts-payid {
+  width: min(430px, 90%);
+
+  margin:
+    32px
+    auto;
+
+  padding:
+    17px
+    24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  border-top:
+    1px solid
+    rgba(49, 76, 104, 0.18);
+
+  border-bottom:
+    1px solid
+    rgba(49, 76, 104, 0.18);
+
+  color: #314c68;
+}
+
+
+.gifts-payid span {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.gifts-payid strong {
+  font-size: 20px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   GIFTS FINAL LINE
+======================================== */
+
+.gifts-final {
+  margin:
+    26px
+    auto
+    0;
+
+  max-width: 600px;
+
+  color: #314c68;
+
+  font-size: 20px;
+
+  font-style: italic;
+
+  line-height: 1.4;
+}
+
+/* ========================================
+   MENU
+======================================== */
+
+.menu-section {
+  position: relative;
+
+  z-index: 2;
+
+  padding:
+    50px
+    20px
+    70px;
+}
+
+
+.menu-inner {
+  position: relative;
+
+  width: min(980px, 88vw);
+
+  margin: 0 auto;
+
+  padding:
+    55px
+    70px
+    55px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.28),
+      rgba(251, 247, 239, 0.28)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(110, 85, 60, 0.10);
+
+  box-shadow:
+    0 16px 36px
+    rgba(70, 50, 30, 0.10);
+}
+
+
+/* ========================================
+   MENU TITLE
+======================================== */
+
+.menu-section .section-title {
+  margin-bottom: 28px;
+}
+
+
+/* ========================================
+   MENU PLACEHOLDER
+======================================== */
+
+.menu-placeholder {
+  width: min(620px, 90%);
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.menu-placeholder-image {
+  display: block;
+
+  width: 120px;
+  height: auto;
+
+  margin:
+    0
+    auto
+    20px;
+
+  object-fit: contain;
+}
+
+
+.menu-placeholder-title {
+  margin:
+    0
+    0
+    10px;
+
+  color: #314c68;
+
+  font-size: 25px;
+
+  font-style: italic;
+}
+
+
+.menu-placeholder-text {
+  margin:
+    0
+    0
+    8px;
+
+  color: #6c5949;
+
+  font-size: 19px;
+
+  line-height: 1.4;
+}
+
+
+.menu-placeholder-note {
+  margin: 0;
+
+  color: #9b7259;
+
+  font-size: 17px;
+
+  font-style: italic;
+
+  line-height: 1.4;
+}
+
+/* ========================================
+   DRESS CODE
+======================================== */
+
+.dress-code {
+  position: relative;
+
+  z-index: 2;
+
+  padding:
+    40px
+    20px
+    60px;
+}
+
+
+/* PAPER */
+
+.dress-code-inner {
+  position: relative;
+
+  width: min(780px, 78vw);
+
+  margin: 0 auto;
+
+  padding:
+    38px
+    42px
+    34px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.28),
+      rgba(251, 247, 239, 0.28)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(110, 85, 60, 0.10);
+
+  box-shadow:
+    0 14px 32px
+    rgba(70, 50, 30, 0.10);
+}
+
+
+/* ========================================
+   DRESS CODE TITLE
+======================================== */
+
+.dress-code .section-title {
+  margin-bottom: 48px;
+}
+
+
+/* ========================================
+   DRESS CODE SUBTITLE
+======================================== */
+
+.dress-code-subtitle {
+  margin:
+    -36px
+    0
+    28px;
+
+  color: #6c5949;
+
+  font-size: 28px;
+
+  font-style: italic;
+
+  line-height: 1.2;
+}
+
+
+/* ========================================
+   DRESS BOARD
+======================================== */
+
+.dress-board {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 30px;
+
+  align-items: start;
+}
+
+
+/* ========================================
+   DRESS COLUMN
+======================================== */
+
+.dress-column {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: 12px;
+  row-gap: 10px;
+
+  align-items: start;
+}
+
+
+/* DIVIDER BETWEEN HER / HIM */
+
+.dress-column:first-child {
+  padding-right: 15px;
+}
+
+.dress-column:last-child {
+  padding-left: 15px;
+}
+
+.dress-column:first-child::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: -15px;
+  bottom: 0;
+
+  width: 1px;
+
+  background:
+    rgba(49, 76, 104, 0.16);
+}
+
+
+/* ========================================
+   DRESS COLUMN TITLE
+======================================== */
+
+.dress-column h3 {
+  grid-column:
+    1 / -1;
+
+  margin:
+    0
+    0
+    12px;
+
+  color: #314c68;
+
+  font-family:
+    "Parisienne",
+    cursive;
+
+  font-size: 34px;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* ========================================
+   DRESS IMAGE CARD
+======================================== */
+
+.dress-image-card {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0;
+
+  background: transparent;
+
+  border: none;
+
+  box-shadow: none;
+
+  overflow: visible;
+}
+
+
+/* IMPORTANT:
+   PRESERVE ORIGINAL IMAGE PROPORTIONS */
+
+.dress-image-card img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 100%;
+
+  object-fit: contain;
+}
+
+
+/* REMOVE OLD FORCED HEIGHTS */
+
+.dress-image-large,
+.dress-image-small {
+  min-height: 0;
+}
+
+
+/* ========================================
+   DRESS CODE COPY
+======================================== */
+
+.dress-code-copy {
+  width: min(620px, 92%);
+
+  margin:
+    24px
+    auto
+    0;
+
+  color: #314c68;
+
+  font-size: 17px;
+
+  line-height: 1.4;
+}
+
+.dress-code-copy p {
+  margin:
+    0
+    0
+    8px;
+}
+
+
+/* ========================================
+   DRESS CODE NOTE
+======================================== */
+
+.dress-code-note {
+  margin-top:
+    14px !important;
+
+  color: #9b7259;
+
+  font-style: italic;
+
+  font-size: 15px;
+}
+
+
+/* ========================================
+   RSVP MODAL
+======================================== */
+
+.rsvp-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 300;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    35px
+    20px;
+
+  background:
+    rgba(35, 44, 48, 0.38);
+
+  backdrop-filter:
+    blur(7px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.rsvp-modal.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* ========================================
+   RSVP PAPER CARD
+======================================== */
+
+.rsvp-modal-card {
+  position: relative;
+
+  width: min(620px, 92vw);
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding:
+    55px
+    65px
+    50px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.25),
+      rgba(251, 247, 239, 0.25)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
+  border:
+    1px solid
+    rgba(110, 85, 60, 0.14);
+
+  box-shadow:
+    0 28px 70px
+    rgba(40, 30, 20, 0.25);
+}
+
+
+/* ========================================
+   RSVP CLOSE BUTTON
+======================================== */
+
+.rsvp-close {
+  position: absolute;
+
+  top: 14px;
+  right: 17px;
+
+  width: 38px;
+  height: 38px;
 
   padding: 0;
 
   border: 0;
-  background: transparent;
+
+  background:
+    transparent;
+
+  color: #314c68;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 34px;
+  font-weight: 400;
+
+  line-height: 1;
 
   cursor: pointer;
-
-  filter:
-    drop-shadow(
-      0 7px 7px
-      rgba(70, 25, 18, 0.28)
-    );
-
-  transition:
-    opacity
-    0.3s
-    ease,
-
-    transform
-    0.3s
-    ease;
-}
-
-
-/* IMAGE INSIDE WAX SEAL */
-
-.wax-seal img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: contain;
-
-  pointer-events: none;
-}
-
-
-/* WAX SEAL HOVER */
-
-.wax-seal:hover {
-  transform:
-    translate(-50%, -50%)
-    scale(1.05);
 }
 
 
 /* ========================================
-   OPEN STATE
+   RSVP HEADER
 ======================================== */
 
+.rsvp-kicker {
+  margin:
+    0
+    0
+    8px;
 
-/* OPEN FLAP */
+  color: #9b7259;
 
-.envelope.open .envelope-flap {
+  font-size: 13px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+}
+
+.rsvp-title {
+  margin:
+    0
+    0
+    13px;
+
+  color: #314c68;
+
+  font-family:
+    "Parisienne",
+    cursive;
+
+  font-size: 66px;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+.rsvp-intro {
+  width: min(430px, 100%);
+
+  margin:
+    0
+    auto
+    35px;
+
+  color: #6c5949;
+
+  font-size: 19px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   RSVP FORM
+======================================== */
+
+#rsvpForm {
+  text-align: left;
+}
+
+
+/* ========================================
+   RSVP FIELD
+======================================== */
+
+.rsvp-field {
+  margin-bottom: 22px;
+}
+
+.rsvp-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #314c68;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  letter-spacing: 0.4px;
+}
+
+.rsvp-field input,
+.rsvp-field select,
+.rsvp-field textarea {
+  width: 100%;
+
+  padding:
+    12px
+    14px;
+
+  border:
+    1px solid
+    rgba(79, 67, 52, 0.22);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background:
+    rgba(255, 252, 246, 0.52);
+
+  color: #314c68;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 17px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.rsvp-field textarea {
+  resize: vertical;
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus,
+.rsvp-field textarea:focus {
+  border-color:
+    rgba(49, 76, 104, 0.55);
+
+  background:
+    rgba(255, 252, 246, 0.82);
+}
+
+
+/* ========================================
+   RSVP SUBMIT BUTTON
+======================================== */
+
+.rsvp-submit {
+  width: 100%;
+
+  margin-top: 8px;
+
+  padding:
+    14px
+    25px;
+
+  border:
+    1px solid
+    rgba(35, 76, 115, 0.42);
+
+  background:
+    rgba(255, 252, 246, 0.42);
+
+  color: #234c73;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size: 19px;
+  font-weight: 500;
+
+  letter-spacing: 0.7px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.rsvp-submit:hover {
+  background:
+    rgba(255, 252, 246, 0.82);
+
   transform:
-    rotateX(180deg);
+    translateY(-2px);
+}
 
-  z-index: 1;
+.rsvp-submit:disabled {
+  opacity: 0.55;
+
+  cursor: default;
+
+  transform: none;
 }
 
 
-/* HIDE NAMES */
+/* ========================================
+   RSVP STATUS
+======================================== */
 
-.envelope.open .envelope-address {
-  opacity: 0;
+.rsvp-status {
+  min-height: 24px;
+
+  margin:
+    18px
+    0
+    0;
+
+  text-align: center;
+
+  color: #6c5949;
+
+  font-size: 17px;
+
+  line-height: 1.3;
 }
 
 
-/* HIDE TAGLINE */
+/* ========================================
+   ACTION BUTTON AS BUTTON
+======================================== */
 
-.envelope.open .envelope-tagline {
-  opacity: 0;
+button.action-button {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  cursor: pointer;
 }
 
 
-/* HIDE WAX SEAL */
+/* ========================================
+   BACK TO TOP
+======================================== */
 
-.envelope.open .wax-seal {
-  opacity: 0;
+.back-to-top {
+  position: fixed;
 
+  right: 24px;
+  bottom: 24px;
+
+  z-index: 120;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #234c73;
+
+  font-size: 24px;
+
+  background:
+    linear-gradient(
+      rgba(251, 247, 239, 0.72),
+      rgba(251, 247, 239, 0.72)
+    ),
+    url("assets/paper-texture.png");
+
+  background-size:
+    cover,
+    420px 420px;
+
+  border:
+    1px solid
+    rgba(90, 72, 53, 0.14);
+
+  box-shadow:
+    0 8px 20px
+    rgba(70, 50, 30, 0.12);
+
+  border-radius: 50%;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.back-to-top:hover {
   transform:
-    translate(-50%, -50%)
-    scale(0.8);
+    translateY(-3px);
+}
+
+/* ========================================
+   BOTTOM DECORATION
+======================================== */
+
+.bottom-decoration {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  margin-top: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  overflow: hidden;
 
   pointer-events: none;
 }
 
 
-/* MOVE INVITATION UP */
+.bottom-decoration-image {
+  display: block;
 
-.envelope.open .invitation-card {
-  transform:
-    translateY(-64%);
+  width: min(1800px, 96vw);
+  height: auto;
 
-  z-index: 3;
+  margin: 0 auto;
 
-  transition-delay: 0.9s;
+  pointer-events: none;
 }
+
 
 
 /* ========================================
    MOBILE
+   DO NOT TUNE YET
 ======================================== */
 
 @media (max-width: 700px) {
 
   .site-header {
-    height: 65px;
+    height: 66px;
 
     padding:
       0
       20px;
   }
 
-
   .logo {
     font-size: 22px;
   }
-
 
   .navigation {
     gap: 15px;
   }
 
-
   .navigation a {
     font-size: 13px;
   }
-
 
   .hero {
     min-height: 100svh;
@@ -590,118 +2082,8 @@ button {
       50px;
   }
 
-
-  .envelope-stage {
-    width: 92vw;
-
-    padding-top: 120px;
-  }
-
-
-  .invitation-card {
-    padding:
-      28px
-      18px;
-  }
-
-
-  .card-date {
-    font-size: 10px;
-
-    letter-spacing: 3px;
-  }
-
-
-  .invitation-card h1 {
-    font-size:
-      clamp(
-        42px,
-        12vw,
-        62px
-      );
-  }
-
-
-  .card-divider {
-    margin-top: 15px;
-
-    font-size: 13px;
-  }
-
-
-  /* MOBILE CLOSED ENVELOPE NAMES */
-
-  .envelope-address {
-    top: -3%;
-
-    font-size:
-      clamp(
-        31px,
-        9vw,
-        43px
-      );
-  }
-
-
-  /* MOBILE TAGLINE */
-
-  .envelope-tagline {
-    top: 27%;
-
-    font-size: 23px;
-  }
-
-
-  /* MOBILE WAX SEAL */
-
-  .wax-seal {
-    width: 82px;
-    height: 82px;
-  }
-
-}
-
-
-/* ========================================
-   SMALL PHONES
-======================================== */
-
-@media (max-width: 430px) {
-
-  .site-header {
-    padding:
-      0
-      15px;
-  }
-
-
-  .logo {
-    font-size: 20px;
-  }
-
-
-  .navigation {
-    gap: 10px;
-  }
-
-
-  .navigation a {
-    font-size: 11px;
-  }
-
-
-  .envelope-stage {
+  .envelope-scene {
     width: 94vw;
-  }
-
-
-  .envelope-address {
-    font-size: 30px;
-  }
-
-
-  .envelope-tagline {
-    font-size: 21px;
   }
 
 }
