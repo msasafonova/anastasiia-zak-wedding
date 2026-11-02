@@ -2087,3 +2087,58 @@ button.action-button {
   }
 
 }
+
+/* ========================================
+   PHOTO UPLOAD FORM
+======================================== */
+
+#photoUploadForm {
+  text-align: left;
+}
+
+.photo-upload-modal-card {
+  width: min(680px, 92vw);
+}
+
+.photo-upload-hint {
+  margin: 9px 0 0;
+  color: #9b7259;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.photo-file-summary {
+  margin: 8px 0 0;
+  color: #6c5949;
+  font-size: 15px;
+}
+
+#photoFiles {
+  padding: 10px;
+  font-size: 15px;
+}
+
+#photoFiles::file-selector-button {
+  margin-right: 12px;
+  padding: 8px 12px;
+  border: 1px solid rgba(35, 76, 115, 0.30);
+  background: rgba(255, 252, 246, 0.72);
+  color: #234c73;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .photo-upload-modal-card {
+    padding: 48px 25px 35px;
+  }
+
+  .photo-upload-modal .rsvp-title {
+    font-size: 48px;
+  }
+
+  #photoFiles {
+    font-size: 14px;
+  }
+}
