@@ -11,7 +11,7 @@
 
   <title>Anastasiia & Zak — 13 March 2027</title>
 
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 
@@ -362,14 +362,13 @@ with comfort in mind for wandering through the gardens and dancing the night awa
             Add it to our wedding collection.
           </p>
 
-          <a
-  class="action-button"
-  href="https://drive.google.com/drive/folders/1ZQSuKq5FxmrX7gMjgnvJJKDCnymUIKeL?usp=drive_link"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Upload photos →
-</a>
+          <button
+            class="action-button"
+            id="openPhotoUpload"
+            type="button"
+          >
+            Upload photos →
+          </button>
 
         </article>
 
@@ -856,6 +855,101 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 
   </div>
 
+</div>
+
+<!-- ========================================
+     PHOTO UPLOAD MODAL
+======================================== -->
+
+<div
+  class="rsvp-modal photo-upload-modal"
+  id="photoUploadModal"
+  aria-hidden="true"
+>
+  <div class="rsvp-modal-card photo-upload-modal-card">
+
+    <button
+      class="rsvp-close"
+      id="closePhotoUpload"
+      type="button"
+      aria-label="Close photo upload form"
+    >
+      ×
+    </button>
+
+    <p class="rsvp-kicker">
+      13 March 2027
+    </p>
+
+    <h2 class="rsvp-title">
+      Share your memories
+    </h2>
+
+    <p class="rsvp-intro">
+      We’d love to see the day through your eyes. Upload your photos and videos here.
+    </p>
+
+    <form id="photoUploadForm">
+
+      <div class="rsvp-field">
+        <label for="photoGuestName">
+          Your name (optional)
+        </label>
+
+        <input
+          id="photoGuestName"
+          name="guestName"
+          type="text"
+          maxlength="80"
+          autocomplete="name"
+          placeholder="So we know who to thank"
+        >
+      </div>
+
+      <div class="rsvp-field">
+        <label for="photoFiles">
+          Choose photos and videos
+        </label>
+
+        <input
+          id="photoFiles"
+          name="files"
+          type="file"
+          accept="image/*,video/*"
+          multiple
+          required
+        >
+
+        <p class="photo-upload-hint">
+          Up to 20 files per upload. Maximum 30 MB per file.
+        </p>
+
+        <p
+          class="photo-file-summary"
+          id="photoFileSummary"
+          aria-live="polite"
+        >
+          No files selected.
+        </p>
+      </div>
+
+      <button
+        class="rsvp-submit"
+        id="photoUploadSubmit"
+        type="submit"
+      >
+        Upload files
+      </button>
+
+      <p
+        class="rsvp-status"
+        id="photoUploadStatus"
+        aria-live="polite"
+      ></p>
+
+    </form>
+
+  </div>
 </div>
 
 <!-- ========================================
