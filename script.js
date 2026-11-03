@@ -365,6 +365,9 @@ const PHOTO_UPLOAD_ENDPOINT =
 
 const MAX_PHOTO_FILES = 20;
 const MAX_PHOTO_FILE_SIZE = 30 * 1024 * 1024;
+const TARGET_COMPRESSED_IMAGE_SIZE = 28 * 1024 * 1024;
+const MAX_COMPRESSED_IMAGE_DIMENSION = 6000;
+
 
 const openPhotoUploadButton =
   document.getElementById("openPhotoUpload");
@@ -502,6 +505,128 @@ function readFileAsBase64(file) {
 }
 
 
+/* ========================================
+   AUTOMATIC PHOTO COMPRESSION
+======================================== */
+
+function loadImageForCompression(file) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    const objectUrl = URL.createObjectURL(file);
+
+    image.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      resolve(image);
+    };
+
+    image.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+
+      reject(
+        new Error(
+          'We could not process "' + file.name +
+          '". Please choose a standard JPEG or HEIC photo, or a smaller version.'
+        )
+      );
+    };
+
+    image.src = objectUrl;
+  });
+}
+
+
+async function compressImageForUpload(file) {
+  const image = await loadImageForCompression(file);
+
+  const originalWidth = image.naturalWidth;
+  const originalHeight = image.naturalHeight;
+
+  if (!originalWidth || !originalHeight) {
+    throw new Error(
+      'Could not read the dimensions of ' + file.name
+    );
+  }
+
+  const scale = Math.min(
+    1,
+    MAX_COMPRESSED_IMAGE_DIMENSION /
+      Math.max(originalWidth, originalHeight)
+  );
+
+  const width = Math.round(originalWidth * scale);
+  const height = Math.round(originalHeight * scale);
+
+  const canvas = document.createElement("canvas");
+
+  canvas.width = width;
+  canvas.height = height;
+
+  const context = canvas.getContext("2d");
+
+  if (!context) {
+    throw new Error(
+      "Your browser could not prepare " + file.name
+    );
+  }
+
+  context.imageSmoothingQuality = "high";
+  context.drawImage(image, 0, 0, width, height);
+
+  const qualities = [
+    0.94,
+    0.90,
+    0.86,
+    0.82,
+    0.78,
+    0.74,
+    0.70
+  ];
+
+  let compressedBlob = null;
+
+  for (const quality of qualities) {
+    compressedBlob = await new Promise((resolve) => {
+      canvas.toBlob(
+        resolve,
+        "image/jpeg",
+        quality
+      );
+    });
+
+    if (
+      compressedBlob &&
+      compressedBlob.size <= TARGET_COMPRESSED_IMAGE_SIZE
+    ) {
+      break;
+    }
+  }
+
+  canvas.width = 0;
+  canvas.height = 0;
+
+  if (
+    !compressedBlob ||
+    compressedBlob.size > TARGET_COMPRESSED_IMAGE_SIZE
+  ) {
+    throw new Error(
+      'The photo "' + file.name +
+      '" could not be compressed below 28 MB. Please choose a smaller version.'
+    );
+  }
+
+  const originalName = file.name.replace(/\.[^/.]+$/, "");
+
+  return new File(
+    [compressedBlob],
+    (originalName || "photo") + ".jpg",
+    {
+      type: "image/jpeg",
+      lastModified: Date.now()
+    }
+  );
+}
+
+
 if (photoUploadForm) {
   photoUploadForm.addEventListener(
     "submit",
@@ -509,13 +634,10 @@ if (photoUploadForm) {
       event.preventDefault();
 
       const files = Array.from(photoFilesInput.files || []);
-      const guestName = document
-        .getElementById("photoGuestName")
-        .value
-        .trim();
 
       const submitButton =
         document.getElementById("photoUploadSubmit");
+
 
       if (files.length === 0) {
         photoUploadStatus.textContent =
@@ -523,11 +645,13 @@ if (photoUploadForm) {
         return;
       }
 
+
       if (files.length > MAX_PHOTO_FILES) {
         photoUploadStatus.textContent =
           "You can upload up to 20 files at a time.";
         return;
       }
+
 
       const invalidType = files.find((file) =>
         !file.type.startsWith("image/") &&
@@ -540,40 +664,72 @@ if (photoUploadForm) {
         return;
       }
 
-      const oversizedFile = files.find(
-        (file) => file.size > MAX_PHOTO_FILE_SIZE
+
+      const oversizedVideo = files.find((file) =>
+        file.type.startsWith("video/") &&
+        file.size > MAX_PHOTO_FILE_SIZE
       );
 
-      if (oversizedFile) {
+      if (oversizedVideo) {
         photoUploadStatus.textContent =
-          oversizedFile.name + " is larger than 30 MB.";
+          oversizedVideo.name +
+          " is larger than 30 MB. Please choose a smaller video.";
         return;
       }
 
+
       submitButton.disabled = true;
-      submitButton.textContent = "Uploading…";
+      submitButton.textContent = "Preparing…";
       photoUploadStatus.textContent = "";
 
       let sentCount = 0;
+      let preparingFiles = true;
+
 
       try {
-        for (const file of files) {
+
+        /* PREPARE ALL FILES BEFORE UPLOADING */
+
+        const preparedFiles = [];
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+
           photoUploadStatus.textContent =
-            "Preparing file " + (sentCount + 1) +
+            "Preparing file " + (i + 1) +
             " of " + files.length + "…";
+
+          if (
+            file.type.startsWith("image/") &&
+            file.size > MAX_PHOTO_FILE_SIZE
+          ) {
+            const compressedFile =
+              await compressImageForUpload(file);
+
+            preparedFiles.push(compressedFile);
+
+          } else {
+            preparedFiles.push(file);
+          }
+        }
+
+
+        /* ALL FILES PREPARED SUCCESSFULLY */
+
+        preparingFiles = false;
+        submitButton.textContent = "Uploading…";
+
+
+        /* UPLOAD FILES ONE BY ONE */
+
+        for (let i = 0; i < preparedFiles.length; i++) {
+          const file = preparedFiles[i];
+
+          photoUploadStatus.textContent =
+            "Uploading file " + (i + 1) +
+            " of " + preparedFiles.length + "…";
 
           const base64 = await readFileAsBase64(file);
-          const safeGuestName = guestName
-            .replace(/[\\/:*?"<>|]/g, "")
-            .trim();
-
-          const storedFileName = safeGuestName
-            ? safeGuestName + " - " + file.name
-            : file.name;
-
-          photoUploadStatus.textContent =
-            "Sending file " + (sentCount + 1) +
-            " of " + files.length + "…";
 
           await fetch(
             PHOTO_UPLOAD_ENDPOINT,
@@ -585,7 +741,7 @@ if (photoUploadForm) {
               },
               body: JSON.stringify({
                 file: base64,
-                fileName: storedFileName,
+                fileName: file.name,
                 mimeType: file.type
               })
             }
@@ -594,29 +750,46 @@ if (photoUploadForm) {
           sentCount++;
         }
 
+
         photoUploadForm.reset();
-        photoFileSummary.textContent = "No files selected.";
+
+        photoFileSummary.textContent =
+          "No files selected.";
 
         photoUploadStatus.textContent =
-          "Upload requests sent. Thank you for sharing your memories!";
+          "Your photos have been uploaded. Thank you for sharing your memories!";
 
         submitButton.textContent = "Sent";
 
         setTimeout(() => {
           closePhotoUpload();
+
           submitButton.disabled = false;
+
           submitButton.textContent = "Upload files";
+
           photoUploadStatus.textContent = "";
         }, 3000);
 
+
       } catch (error) {
+
         console.error("Photo upload failed:", error);
 
-        photoUploadStatus.textContent =
-          sentCount > 0
-            ? "The connection stopped after " + sentCount +
-              " file(s). Some may already be in the folder. Please check before trying again."
-            : "Something went wrong. Please try again.";
+        if (preparingFiles) {
+          photoUploadStatus.textContent =
+            error.message ||
+            "We couldn't prepare your files. Please try again.";
+
+        } else if (sentCount > 0) {
+          photoUploadStatus.textContent =
+            "The connection stopped after " + sentCount +
+            " file(s). Some may already be in the folder. Please check before trying again.";
+
+        } else {
+          photoUploadStatus.textContent =
+            "Something went wrong. Please try again.";
+        }
 
         submitButton.disabled = false;
         submitButton.textContent = "Try again";
