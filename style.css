@@ -63,7 +63,7 @@ button {
       rgba(251, 247, 239, 0.58),
       rgba(251, 247, 239, 0.58)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -427,7 +427,7 @@ button {
       rgba(251, 247, 239, 0.35),
       rgba(251, 247, 239, 0.35)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -659,7 +659,7 @@ button {
       rgba(251, 247, 239, 0.30),
       rgba(251, 247, 239, 0.30)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -852,7 +852,7 @@ button {
       rgba(251, 247, 239, 0.30),
       rgba(251, 247, 239, 0.30)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -1086,7 +1086,7 @@ button {
       rgba(251, 247, 239, 0.28),
       rgba(251, 247, 239, 0.28)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -1250,7 +1250,7 @@ button {
       rgba(251, 247, 239, 0.28),
       rgba(251, 247, 239, 0.28)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -1386,7 +1386,7 @@ button {
       rgba(251, 247, 239, 0.28),
       rgba(251, 247, 239, 0.28)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -1675,7 +1675,7 @@ button {
       rgba(251, 247, 239, 0.25),
       rgba(251, 247, 239, 0.25)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -1984,7 +1984,7 @@ button.action-button {
       rgba(251, 247, 239, 0.72),
       rgba(251, 247, 239, 0.72)
     ),
-    url("assets/paper-texture.png");
+    url("assets/paper-texture.webp");
 
   background-size:
     cover,
@@ -2207,7 +2207,7 @@ button.action-button {
         rgba(251, 247, 239, 0.88),
         rgba(251, 247, 239, 0.88)
       ),
-      url("assets/paper-texture.png");
+      url("assets/paper-texture.webp");
 
     background-size:
       cover,
