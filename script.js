@@ -456,6 +456,84 @@ document.addEventListener(
   }
 );
 
+/* ========================================
+   BANK DETAILS MODAL
+======================================== */
+
+const openBankDetailsButton =
+  document.getElementById("openBankDetails");
+
+const closeBankDetailsButton =
+  document.getElementById("closeBankDetails");
+
+const bankDetailsModal =
+  document.getElementById("bankDetailsModal");
+
+
+function openBankDetails() {
+  bankDetailsModal.classList.add("open");
+
+  bankDetailsModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow = "hidden";
+}
+
+
+function closeBankDetails() {
+  bankDetailsModal.classList.remove("open");
+
+  bankDetailsModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow = "";
+}
+
+
+if (openBankDetailsButton) {
+  openBankDetailsButton.addEventListener(
+    "click",
+    openBankDetails
+  );
+}
+
+
+if (closeBankDetailsButton) {
+  closeBankDetailsButton.addEventListener(
+    "click",
+    closeBankDetails
+  );
+}
+
+
+if (bankDetailsModal) {
+  bankDetailsModal.addEventListener(
+    "click",
+    (event) => {
+      if (event.target === bankDetailsModal) {
+        closeBankDetails();
+      }
+    }
+  );
+}
+
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (
+      event.key === "Escape" &&
+      bankDetailsModal &&
+      bankDetailsModal.classList.contains("open")
+    ) {
+      closeBankDetails();
+    }
+  }
+);
 
 function formatFileSize(bytes) {
   return bytes >= 1024 * 1024
@@ -796,4 +874,20 @@ if (photoUploadForm) {
       }
     }
   );
+}
+
+/* ========================================
+   INTRO ENVELOPE SCREEN
+======================================== */
+
+const introScreen = document.getElementById("introScreen");
+
+if (introScreen) {
+  introScreen.addEventListener("click", () => {
+    if (introScreen.classList.contains("is-opening")) return;
+
+    introScreen.classList.add("is-opening");
+    introScreen.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("intro-locked");
+  });
 }

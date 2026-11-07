@@ -41,11 +41,28 @@
   <meta name="twitter:image"
         content="https://msasafonova.github.io/anastasiia-zak-wedding/assets/wedding-preview.png">
 
-  <link rel="stylesheet" href="style.css?v=9">
+<link rel="preload" as="image" href="assets/wedding-envelope-cover.webp" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 
 
-<body>
+<body class="intro-locked">
+
+  <button
+    class="intro-screen"
+    id="introScreen"
+    type="button"
+    aria-label="Open our wedding invitation"
+  >
+    <img
+      class="intro-screen-image"
+      src="assets/wedding-envelope-cover.webp"
+      alt=""
+      fetchpriority="high"
+      decoding="async"
+    >
+    <span class="intro-screen-hint">Tap to open</span>
+  </button>
 
   <!-- ========================================
        HEADER
@@ -79,13 +96,13 @@
 
   <img
     class="parallax-tree olive-tree"
-    src="assets/olive-tree.webp"
+    src="assets/olive-tree.png"
     alt=""
   >
 
   <img
     class="parallax-tree birch-tree"
-    src="assets/birch-tree.webp"
+    src="assets/birch-tree.png"
     alt=""
   >
 
@@ -114,7 +131,7 @@
 
         <img
           class="envelope-back-image"
-          src="assets/envelope-back.webp"
+          src="assets/envelope-back.png"
           alt=""
           aria-hidden="true"
         >
@@ -126,7 +143,7 @@
 
         <img
           class="invitation-image"
-          src="assets/invitation.webp"
+          src="assets/invitation.png"
           alt="Anastasiia and Zak wedding invitation"
         >
 
@@ -137,7 +154,7 @@
 
         <img
           class="envelope-front-image"
-          src="assets/envelope-front.webp"
+          src="assets/envelope-front.png"
           alt=""
           aria-hidden="true"
         >
@@ -152,7 +169,7 @@
         <div class="front-seal">
 
           <img
-            src="assets/wax-seal.webp"
+            src="assets/wax-seal.png"
             alt=""
             aria-hidden="true"
           >
@@ -179,11 +196,9 @@
 
       <div class="quick-nav-icon">
         <img
-          src="assets/ceremony-icon.webp"
+          src="assets/ceremony-icon.png"
           alt=""
           aria-hidden="true"
-          loading="lazy"
-          decoding="async"
         >
       </div>
 
@@ -191,16 +206,14 @@
         The Ceremony
       </h3>
 
-      <p class="quick-nav-main">
-        3:00 PM
-      </p>
+<p class="quick-nav-main">
+  St Andrew’s Greek Orthodox Church
+</p>
 
-      <p class="quick-nav-description">
-        St Andrew’s Greek 
-        Orthodox Church <br>
-<span class="quick-nav-divider" aria-hidden="true">✦</span>
-201 Mahoneys Rd, Forest Hill
-      </p>
+<p class="quick-nav-description">
+  3:00 PM<br>
+  201 Mahoneys Rd, Forest Hill
+</p>
 
       <a
         href="https://www.google.com/maps/search/?api=1&query=St+Andrew%27s+Greek+Orthodox+Church+201+Mahoneys+Road+Forest+Hill+VIC+3131"
@@ -219,11 +232,9 @@
 
       <div class="quick-nav-icon">
         <img
-          src="assets/reception-icon.webp"
+          src="assets/reception-icon.png"
           alt=""
           aria-hidden="true"
-          loading="lazy"
-          decoding="async"
         >
       </div>
 
@@ -231,16 +242,14 @@
         The Reception
       </h3>
 
-      <p class="quick-nav-main">
-        4:30 PM
-      </p>
+<p class="quick-nav-main">
+  Chateau Wyuna
+</p>
 
-      <p class="quick-nav-description">
-        Chateau Wyuna<br>
-        On-site parking available<br>
-<span class="quick-nav-divider" aria-hidden="true">✦</span>
-170 Swansea Road, Mount Evelyn
-      </p>
+<p class="quick-nav-description">
+  4:30 PM — On-site parking available<br>
+  170 Swansea Road, Mount Evelyn
+</p>
 
       <a
         href="https://www.google.com/maps/search/?api=1&query=Chateau+Wyuna+170+Swansea+Road+Mount+Evelyn+VIC+3796"
@@ -262,11 +271,9 @@
 
       <div class="quick-nav-icon">
         <img
-          src="assets/dress-code-icon.webp"
+          src="assets/dress-code-icon.png"
           alt=""
           aria-hidden="true"
-          loading="lazy"
-          decoding="async"
         >
       </div>
 
@@ -293,11 +300,9 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 
       <div class="quick-nav-icon">
         <img
-          src="assets/menu-icon.webp"
+          src="assets/menu-icon.png"
           alt=""
           aria-hidden="true"
-          loading="lazy"
-          decoding="async"
         >
       </div>
 
@@ -428,15 +433,13 @@ with comfort in mind for wandering through the gardens and dancing the night awa
     you can use our PayID below.
   </p>
 
-  <div class="action-payid">
-    <span>
-      PayID
-    </span>
-
-    <strong>
-      [details]
-    </strong>
-  </div>
+<button
+  class="gifts-payid-button"
+  id="openBankDetails"
+  type="button"
+>
+  PayID details →
+</button>
 
 </article>
 
@@ -457,13 +460,17 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 
       <div class="our-day-inner">
 
-        <p class="section-kicker">
-          Chateau Wyuna · 4:30 PM — 11:00 PM
-        </p>
+      <p class="section-kicker">
+  Chateau Wyuna
+</p>
 
-        <h2 class="section-title">
-          Reception Timeline
-        </h2>
+<p class="timeline-hours">
+  4:30 PM — 11:00 PM
+</p>
+
+<h2 class="section-title">
+  Reception Timeline
+</h2>
 
 
         <div class="timeline">
@@ -639,11 +646,9 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 
       <img
         class="menu-placeholder-image"
-        src="assets/menu-icon.webp"
+        src="assets/menu-icon.png"
         alt=""
         aria-hidden="true"
-        loading="lazy"
-        decoding="async"
       >
 
       <p class="menu-placeholder-title">
@@ -654,9 +659,7 @@ with comfort in mind for wandering through the gardens and dancing the night awa
         We’re still finalising the delicious details.
       </p>
 
-      <p class="menu-placeholder-note">
-        Check back closer to the day for the full food and drinks menu.
-      </p>
+
 
     </div>
 
@@ -700,10 +703,8 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 
   <img
     class="bottom-decoration-image"
-    src="assets/bottom-garland.webp"
+    src="assets/bottom-garland.png"
     alt=""
-    loading="lazy"
-    decoding="async"
   >
 
 </section>
@@ -969,6 +970,62 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 </div>
 
 <!-- ========================================
+     BANK DETAILS MODAL
+======================================== -->
+
+<div
+  class="rsvp-modal bank-details-modal"
+  id="bankDetailsModal"
+  aria-hidden="true"
+>
+
+  <div class="rsvp-modal-card bank-details-card">
+
+    <button
+      class="rsvp-close"
+      id="closeBankDetails"
+      type="button"
+      aria-label="Close bank details"
+    >
+      ×
+    </button>
+
+    <p class="rsvp-kicker">
+      WEDDING GIFTS
+    </p>
+
+    <h2 class="rsvp-title">
+      Bank Details
+    </h2>
+
+    <p class="rsvp-intro">
+      Thank you for your kindness and generosity.
+    </p>
+
+    <div class="bank-details-list">
+
+      <div class="bank-details-row">
+        <span>Account name</span>
+        <strong>[Account Name]</strong>
+      </div>
+
+      <div class="bank-details-row">
+        <span>BSB</span>
+        <strong>[BSB]</strong>
+      </div>
+
+      <div class="bank-details-row">
+        <span>Account number</span>
+        <strong>[Account Number]</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========================================
      BACK TO TOP
 ======================================== -->
 
@@ -981,7 +1038,7 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 </a>
 
 
-  <script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 
 </body>
 
