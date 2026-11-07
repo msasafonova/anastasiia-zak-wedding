@@ -564,6 +564,17 @@ button {
   line-height: 1.4;
 }
 
+.quick-nav-divider {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+
+  color: #9b7259;
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+}
+
 
 /* ========================================
    QUICK NAV LINKS
@@ -2204,8 +2215,8 @@ button.action-button {
 
     background:
       linear-gradient(
-        rgba(251, 247, 239, 0.88),
-        rgba(251, 247, 239, 0.88)
+        rgba(251, 247, 239, 0.30),
+        rgba(251, 247, 239, 0.30)
       ),
       url("assets/paper-texture.webp");
 
@@ -2271,7 +2282,7 @@ button.action-button {
 
     color: #234c73;
 
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
 
     letter-spacing: 2px;
@@ -2286,7 +2297,7 @@ button.action-button {
 
     color: #234c73;
 
-    font-size: 23px;
+    font-size: 26px;
     line-height: 1.15;
 
     text-align: left;
@@ -2299,7 +2310,7 @@ button.action-button {
 
     color: #6f645a;
 
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.35;
 
     text-align: left;
@@ -2317,7 +2328,7 @@ button.action-button {
 
     color: #234c73;
 
-    font-size: 16px;
+    font-size: 18px;
   }
 
 
@@ -2368,17 +2379,23 @@ button.action-button {
   }
 
   .action-eyebrow {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
   }
 
   .action-card h2 {
-    font-size: clamp(27px, 7vw, 35px);
-    line-height: 1.1;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(23px, 5.5vw, 28px);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  #gifts h2 {
+    font-size: clamp(29px, 6.4vw, 34px);
   }
 
   .action-description {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.4;
 
     margin-bottom: 18px;
@@ -2390,7 +2407,7 @@ button.action-button {
 
     padding: 10px 8px;
 
-    font-size: 15px;
+    font-size: 16px;
   }
 
 
