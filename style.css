@@ -2097,7 +2097,7 @@ button.action-button {
   }
 
   .navigation a {
-    font-size: 12px;
+    font-size: 16px;
     letter-spacing: 0.5px;
   }
 
@@ -2145,7 +2145,8 @@ button.action-button {
     width: 94vw;
   }
 
-  .front-seal {
+.front-seal {
+    bottom: 7%;
     width: 78px;
     height: 78px;
   }
