@@ -109,7 +109,7 @@ body.intro-locked {
   bottom: clamp(70px, 10vh, 110px);
 
   color: #234c73;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Cormorant Garamond, Georgia, serif;
   font-size: clamp(15px, 2vw, 19px);
   font-weight: 500;
   letter-spacing: 2.5px;
@@ -128,6 +128,25 @@ body.intro-locked {
 
 .intro-screen.is-opening .intro-screen-image {
   transform: scale(1.035);
+}
+
+/* Mobile: fill the entire screen */
+
+@media (max-width: 600px) {
+  .intro-screen {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .intro-screen-image {
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+    max-height: none;
+
+    object-fit: cover;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
