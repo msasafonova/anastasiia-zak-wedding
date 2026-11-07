@@ -1036,7 +1036,31 @@ with comfort in mind for wandering through the gardens and dancing the night awa
 >
   ↑
 </a>
+<script>
+document.querySelectorAll(".bank-details-row[data-copy-value]").forEach(row => {
 
+  const copyValue = async () => {
+    const status = document.getElementById("bankCopyStatus");
+
+    try {
+      await navigator.clipboard.writeText(row.dataset.copyValue);
+      status.textContent = row.querySelector("span").textContent + " copied!";
+    } catch (error) {
+      status.textContent = "Copy unavailable. Please select the value manually.";
+    }
+  };
+
+  row.addEventListener("click", copyValue);
+
+  row.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      copyValue();
+    }
+  });
+
+});
+</script>
 
 <script src="script.js?v=5"></script>
 
