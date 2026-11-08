@@ -836,8 +836,8 @@ body.intro-locked {
 
   color: #9b7259;
 
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 700;
 
   letter-spacing: 4px;
 
@@ -2519,10 +2519,11 @@ background:
   justify-content: flex-start;
 }
 
-  .action-eyebrow {
-    font-size: 11px;
+.action-eyebrow {
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: 2px;
-  }
+}
 
 .action-card h2 {
   font-family: "Cormorant Garamond", Georgia, serif;
